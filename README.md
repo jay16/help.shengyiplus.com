@@ -1,1 +1,20 @@
-This file serves as an introduction to your Knowledge Base, it is displayed on the homepage of your website. Use it to provide more context to your visitors.
+# 『生意+』帮助文
+
+『生意+』 是胜因软件技术有限公司开发的新一代数据分析产品，主打移动端报表展示。
+
+## 合作伙伴
+
+- 『永辉生意人』永辉超市股份有限公司（上海）
+- 『企邮通』浩擎信息科技有限公司（上海）
+
+
+如果你是上述合作伙伴公司的应用使用用户，请不要疑惑，所有围绕应用使用相关的问题都统一整理在这里。
+
+## 
+## 客户端
+
+TODO
+
+## 超大屏
+
+TODO
