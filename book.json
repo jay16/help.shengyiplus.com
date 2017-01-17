@@ -1,3 +1,4 @@
 {
-    "plugins": [ "theme-faq" ]
+    "title": "『生意+』帮助文档",
+    "plugins": [ "theme-default" ]
 }
