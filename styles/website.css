@@ -1,0 +1,3 @@
+.book-header > .pull-right { display: none; }
+.book-header > .js-toolbar-action > .fa-align-justify:before { content: "\f039 目录"; }
+.book-header > .js-toolbar-action > .toggle-dropdown > .fa-font:before { content: "\f031 字体设置"; }
