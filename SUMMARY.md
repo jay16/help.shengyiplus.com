@@ -1,6 +1,6 @@
 * [『生意+』帮助文档](README.md)
 * [功能说明](/docs/modules/index.md)
-    * [移动端]
+    * [移动端]()
         * [仪表盘](/docs/modules/dashboard.md)
         * [分析](/docs/modules/analyse.md)
         * [应用](/docs/modules/app.md)
@@ -9,7 +9,7 @@
         * [语音播放](/docs/modules/report-audio.md)
         * [搜索](/docs/modules/search.md)
         * [设置](/docs/modules/setting.md)
-    * [服务器]
+    * [服务器]()
         * [消息中心](/docs/developer/message-center.md)
 * [常见问题]()
     * [安装问题](/docs/FAQ/faq.md)
