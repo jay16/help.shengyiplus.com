@@ -25,15 +25,15 @@
 
 `sys_message_center`
 
-字段 | 类型 | 说明
-:---|:---|:---
-content | text | 通知的内容
-notify_mode | string | 通知的类型（sms/push）
-notify_level |  int | 通知的优先级（1-10）
-receivers | text | 接收者（使用用户编号）
+字段 | 类型 | 必填 | 说明
+:---|:---|:---|:---
+content | text | Y | 通知的内容
+notify_mode | string | 默认 sms| 通知的类型（sms/push）
+notify_level |  int | 默认 1 | 通知的优先级（1-10）
+receivers | text | Y | 接收者（使用用户编号）
 
 ### API 接口
 
 TODO
 
-*提供开发者使用；*
+*提供开发者使用；思考使用场景；*
