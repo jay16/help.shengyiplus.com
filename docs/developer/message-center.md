@@ -30,7 +30,34 @@
 content | text | Y | 通知的内容
 notify_mode | string | 默认 sms| 通知的类型（sms/push）
 notify_level |  int | 默认 1 | 通知的优先级（1-10）
-receivers | text | Y | 接收者（使用用户编号）
+receivers | text | Y | 接收者（用户编号，多个使用半角逗号分隔）
+
+
+- 通知类型为**推送消息**时，需判断接收者是否登录过客户端（注册推送消息的 token），以便测试客户端接收消息的推送状态。
+
+    ```
+    select name
+          , platform
+          , os
+          , os_version
+          , push_device_token
+      from sys_devices
+     where id in (
+      select device_id
+        from sys_user_devices
+       where user_num in ('mock-user')
+         and length(push_device_token) > 0
+    )
+    ```
+
+- 通知类型为**发短信**时，需判断接收者是否有配置手机号，以便测试短信的接收状态。
+
+    ```
+    select mobile
+      from sys_users
+     where user_num in ('mock-user')
+    ```
+
 
 ### API 接口
 
