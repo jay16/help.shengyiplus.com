@@ -46,7 +46,7 @@ window.SYPWithinAndroid = {
    */
   pageLink: function(bannerName, link, objectId) {
     if(window.AndroidJSBridge && typeof(window.AndroidJSBridge.pageLink) === "function") {
-      window.AndroidJSBridge.pageLink(bannerName, $.trim(link), objectId);
+      window.AndroidJSBridge.pageLink(bannerName, link.trim(), objectId);
     } else {
       alert("Error 未定义接口(Android): pageLink");
     }
@@ -54,9 +54,7 @@ window.SYPWithinAndroid = {
   /*
    * 原生弹出框
    *
-   * 存在意义:
-   *
-   *     网页内部的 `alert` 弹出框，标题为网页所在文件夹名称，用户体验不佳。
+   * 网页内部的 `alert` 弹出框，标题为网页所在文件夹名称，用户体验不佳。
    *
    * title  : 标题名称（暂未使用，可传空）
    * message: 弹出框内容
@@ -71,9 +69,7 @@ window.SYPWithinAndroid = {
   /*
    * 原生弹出框，点击『确定』后跳转至其他链接
    *
-   * 存在意义:
-   *
-   *     使用原生弹出框但继续使用网页内部的跳转方式时，跳转操作不会等弹出框的业务操作
+   * 使用原生弹出框但继续使用网页内部的跳转方式时，跳转操作不会等弹出框的业务操作
    *
    * title       : 标题名称（暂未使用，可传空）
    * message     : 弹出框内容
@@ -89,9 +85,7 @@ window.SYPWithinAndroid = {
   /*
    * 原生弹出框，点击『确定』后跳转至其他链接，清空链接栈
    *
-   * 存在意义:
-   *
-   *     有些业务流程不可以返回历史链接，比如『新建』，所以跳转至该链接时，清空栈，点击标题栏中的『返回』则关闭浏览器
+   * 有些业务流程不可以返回历史链接，比如『新建』，所以跳转至该链接时，清空栈，点击标题栏中的『返回』则关闭浏览器
    *
    * title       : 标题名称（暂未使用，可传空）
    * message     : 弹出框内容
@@ -107,9 +101,7 @@ window.SYPWithinAndroid = {
   /*
    * 控制原生标题栏的隐藏及显示
    *
-   * 存在意义:
-   *
-   *     有些业务操作在弹出页面中已有标题栏，此时可以通过该函数控制原生标题栏的隐藏及显示
+   * 有些业务操作在弹出页面中已有标题栏，此时可以通过该函数控制原生标题栏的隐藏及显示
    *
    * state: 显示或隐藏（show/hidden）
    */
@@ -301,4 +293,5 @@ window.SYP.checkVersion();
 window.onerror = function(e) {
   window.SYP.jsException(e);
 }
+
 ```
