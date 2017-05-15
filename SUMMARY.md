@@ -16,6 +16,6 @@
     * [报表问题](/docs/FAQ/module-report.md)
 * [开发约束]()
     * [应用模块](/docs/developer/module-app.md)
-    * [主题页面 JS 接口](/docs/developer/subject-js-bridage.md)
+    * [JS 交互原生代码接口](/docs/developer/js-native-bridge.md)
     * [JS 接口源代码](/docs/developer/syp_v1.js.md)
 
