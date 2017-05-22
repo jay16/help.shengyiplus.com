@@ -146,9 +146,7 @@ window.SYP.showAlertAndRedirectWithCleanStack("温馨提示", "创建成功", "h
 
     必须按上述示例操作的原因：[应用内部浏览器跳转](/docs/developer/module-app.md)
 
-### 离线页面规范
-
-TODO
+3. APP 内部链接测试 [SYP 说明文档](http://123.56.91.131:8090/syp_v1_direction)
 
 
 

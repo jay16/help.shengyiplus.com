@@ -1,8 +1,24 @@
 ``` javascript
-SHENGYIPLUSVERSION = '0.1.0'
+SHENGYIPLUSVERSION = '1.0.2'
 String.prototype.trim = function() {
   return this.replace(/(^\s*)|(\s*$)/g,'');
 }
+
+/*
+  - 链接栈逻辑：后进先出、不可重复、重复时移除其间项、一键清空
+      - 后进先出，不解释
+      - 不可重复，不存在则入栈
+      - 重复时，若是结尾项则刷新页面（栈不动），若是中间项则移除结尾项至已存在项位置
+      - 一健清空，关闭主题页面
+
+  - 链接分两大类，在线链接（http[s]://）、离线链接（offline://）
+      - 在线链接（http[s]://），不解释
+      - 离线链接（offline://）
+          - 格式：offline://离线网站名称@离线页面
+          - 离线网站位置：Shared/离线网站文件夹
+          - 实例：offline://HD@list.html
+          - 一键清空：offline:////
+ */
 
 /*
  * Android <=> JS 交互接口
@@ -32,21 +48,47 @@ window.SYPWithinAndroid = {
    */
   goBack: function() {
     if(window.AndroidJSBridge && typeof(window.AndroidJSBridge.goBackBehavior) === "function") {
-      window.AndroidJSBridge.goBackBehavior();
+      window.AndroidJSBridge.goBack();
     } else {
       alert("Error 未定义接口(Android): goBack");
     }
   },
   /*
    * 链接跳转
+   * 实例：
+   *     offline://index.html
+   *     offline://syp@index.html
+   *     http://host.com/index.html
    *
    * bannerName : 标题栏使用原生代码开发，该参数显示为标题
    * link       : 主体为浏览器，加载该链接
    * objectId   : 业务对象ID (项目内部使用，其他可传 -1)
    */
   pageLink: function(bannerName, link, objectId) {
-    if(window.AndroidJSBridge && typeof(window.AndroidJSBridge.pageLink) === "function") {
-      window.AndroidJSBridge.pageLink(bannerName, link.trim(), objectId);
+    link = link.trim();
+    var match = link.match(/^offline:\/\/(.*?)@(.*?)$/);
+    if(match && match.length === 3) {
+        window.AndroidJSBridge.pageLinkWithinModule(bannerName, match[1], match[2]);
+    } else {
+      if(window.AndroidJSBridge && typeof(window.AndroidJSBridge.pageLink) === "function") {
+        window.AndroidJSBridge.pageLink(bannerName, link, objectId);
+      } else {
+        alert("Error 未定义接口(Android): pageLink");
+      }
+    }
+  },
+  /*
+   * 项目内部模块页面跳转（离线页面）
+   *
+   * 实例：offline://syp@index.html
+   *
+   * bannerName : 标题栏使用原生代码开发，该参数显示为标题
+   * module     : 模块文件夹名称
+   * pageName   : 模块内离线页面名称
+   */
+  pageLinkWithinModule: function(bannerName, module, pageName) {
+    if(window.AndroidJSBridge && typeof(window.AndroidJSBridge.pageLinkWithinModule) === "function") {
+      window.AndroidJSBridge.pageLinkWithinModule(bannerName, module, pageName);
     } else {
       alert("Error 未定义接口(Android): pageLink");
     }
@@ -76,8 +118,8 @@ window.SYPWithinAndroid = {
    * redirectUrl : 待跳转的链接
    */
   showAlertAndRedirect: function(title, message, redirectUrl) {
-    if(window.AndroidJSBridge && typeof(window.AndroidJSBridge.showAlertAndRedirect) === "function") {
-      window.AndroidJSBridge.showAlertAndRedirect(title, message, redirectUrl, 'no');
+    if(window.AndroidJSBridge && typeof(window.AndroidJSBridge.showAlertAndRedirectV1) === "function") {
+      window.AndroidJSBridge.showAlertAndRedirectV1(title, message, redirectUrl, 'no');
     } else {
       alert("Error 未定义接口(Android): showAlertAndRedirect");
     }
@@ -92,8 +134,8 @@ window.SYPWithinAndroid = {
    * redirectUrl : 待跳转的链接
    */
   showAlertAndRedirectWithCleanStack: function(title, message, redirectUrl) {
-    if(window.AndroidJSBridge && typeof(window.AndroidJSBridge.showAlertAndRedirect) === "function") {
-      window.AndroidJSBridge.showAlertAndRedirect(title, message, redirectUrl, 'yes');
+    if(window.AndroidJSBridge && typeof(window.AndroidJSBridge.showAlertAndRedirectV1) === "function") {
+      window.AndroidJSBridge.showAlertAndRedirectV1(title, message, redirectUrl, 'yes');
     } else {
       alert("Error 未定义接口(Android): showAlertAndRedirect");
     }
@@ -185,12 +227,17 @@ window.SYPWithinIOS = {
   },
   goBack: function() {
     SYPWithinIOS.connectWebViewJavascriptBridge(function(bridge){
-      bridge.callHandler('goBackBehavior', {}, function(response) {});
+      bridge.callHandler('goBack', {}, function(response) {});
     })
   },
   pageLink: function(bannerName, link, objectId) {
     SYPWithinIOS.connectWebViewJavascriptBridge(function(bridge){
-      bridge.callHandler('iosCallback', {'bannerName': bannerName, 'link': link, 'objectID': objectId}, function(response) {});
+      bridge.callHandler('pageLink', {'bannerName': bannerName, 'link': link, 'objectID': objectId}, function(response) {});
+    })
+  },
+  pageLinkWithinModule: function(bannerName, link, objectId) {
+    SYPWithinIOS.connectWebViewJavascriptBridge(function(bridge){
+      bridge.callHandler('pageLinkWithinModule', {'bannerName': bannerName, 'link': link, 'objectID': objectId}, function(response) {});
     })
   },
   showAlert: function(title, message) {
@@ -248,34 +295,28 @@ window.SYP = {
     window.history.back();
   },
   pageLink: function(bannerName, link, objectId) {
-    window.location.href = htmlName;
+    window.location.href = link;
   },
   showAlert: function(title, message) {
     alert(message);
   },
   showAlertAndRedirect: function(title, message, redirectUrl) {
-    alert(message);
-    window.location.href = redirectUrl.replace('offline://', '');
+    window.location.href = redirectUrl.split('@')[1];
   },
   showAlertAndRedirectWithCleanStack: function(title, message, redirectUrl) {
     alert(message);
-    SYP.pageLink(redirectUrl.replace('offline://', ''));
+    window.SYP.pageLink(redirectUrl.split('@')[1]);
   },
   toggleShowBanner: function(state) {
-    console.log(window.SYP.version());
     console.log({'toggleShowBanner state': state});
   },
   appBadgeNum: function(type, num) {
-    console.log(window.SYP.version());
     console.log({'type': type, 'num': num});
   },
   setBannerTitle: function(title) {
-    console.log(window.SYP.version());
-    console.log({'title': title});
     $(document).attr("title", title);
   },
   addSubjectMenuItems: function(menuItems) {
-    console.log(window.SYP.version());
     console.log({'menu_items': menuItems});
   }
 };
@@ -289,9 +330,21 @@ if(isiOS) {
   window.SYP = window.SYPWithinAndroid;
 }
 
+console.log(window.SYP.version());
 window.SYP.checkVersion();
 window.onerror = function(e) {
   window.SYP.jsException(e);
 }
 
+function goto_url(url) {
+  if(url !== undefined && url !== null && url.trim().length) {
+    window.SYP.pageLinkV1(url, 'offline://hd_cre@' + url.trim(), 0);
+  } else {
+    alert('该链接不支持跳转: ' + url);
+  }
+}
+
+$(function() {
+  window.SYP.setBannerTitle($(document).attr("title"));
+});
 ```
