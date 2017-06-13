@@ -18,4 +18,6 @@
     * [应用模块](/docs/developer/module-app.md)
     * [JS 交互原生代码接口](/docs/developer/js-native-bridge.md)
     * [JS 接口源代码](/docs/developer/syp_v1.js.md)
+    * [支持第三方服务的接口](/docs/developer/third-party-api.md)
+    * [`API#v2` 接口](/docs/developer/api_v2.md)
 
