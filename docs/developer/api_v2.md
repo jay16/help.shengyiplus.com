@@ -21,7 +21,9 @@
 - 获取群组列表
 - 更新群组
 - 删除群组
+- 获取用户角色权限列表
 - 更新用户角色权限
+- 获取用户群组权限列表
 - 更新用户群组权限
 - 更新用户冻结状态
 - 更新用户登录密码
@@ -368,20 +370,111 @@ response:
 }
 ```
 
+#### 获取用户角色权限列表
+
+```
+get /api/v2/user/:user_num/roles
+
+
+response:
+{
+  code: 200(成功)/401(接口权限验证失败),
+  message: 成功提示/失败原因,
+  data: [
+    {
+      角色信息
+    }
+  ]
+}
+```
+
 #### 更新用户角色权限
 
-TODO: 实现
+```
+put /api/v2/user/:user_num/roles
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+  role_ids: [角色ID 列表]
+}
+
+response:
+{
+  code: 201(成功)/200(失败)/401(接口权限验证失败)
+  message: 成功提示/失败原因
+}
+```
+
+#### 获取用户群组权限列表
+
+```
+get /api/v2/user/:user_num/groups
+
+
+response:
+{
+  code: 200(成功)/401(接口权限验证失败),
+  message: 成功提示/失败原因,
+  data: [
+    {
+      群组信息
+    }
+  ]
+}
+```
 
 #### 更新用户群组权限
 
-TODO: 实现
+```
+put /api/v2/user/:user_num/groups
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+  group_ids: [群组ID 列表]
+}
+
+response:
+{
+  code: 201(成功)/200(失败)/401(接口权限验证失败)
+  message: 成功提示/失败原因
+}
+```
 
 #### 更新用户冻结状态
 
-TODO: 实现
+```
+put /api/v2/user/:user_num/status
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+  status: 1(正常)/0(冻结)
+}
+
+response:
+{
+  code: 201(成功)/200(失败)/401(接口权限验证失败)
+  message: 成功提示/失败原因
+}
+```
 
 #### 更新用户登录密码
 
-TODO: 补充说明
+```
+put /api/v2/user/:user_num/password
 
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+  password: MD5 加密 32 位字符串
+}
+
+response:
+{
+  code: 201(成功)/200(失败)/401(接口权限验证失败)
+  message: 成功提示/失败原因
+}
+```
 
