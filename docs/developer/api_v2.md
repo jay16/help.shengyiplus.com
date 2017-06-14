@@ -45,8 +45,7 @@
 
 * CRUD 分别对应的 HTTP 操作
 
-  * 创建时 Post
-  * 更新时 Put
+  * 创建、更新时 Post
   * 获取时 Get
   * 删除时 Delete
 
@@ -66,7 +65,7 @@ post /api/v2/user
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
   user: {
     user_name: "必填，用户名称",
     user_num: "必填，用户编号，确保全表唯一",
@@ -81,7 +80,7 @@ params:
 
 response:
 {
-  code: 201(成功)/200(失败原因)
+  code: 201(成功)/200(失败原因),
   message: 成功提示/失败原因,
   data: { // 用户信息
     id: "数据表标识ID",
@@ -130,12 +129,11 @@ response:
 #### 更新用户（基本信息，不关联权限逻辑）
 
 ```
-put /api/v2/user
+put /api/v2/user/:user_num
 
 params:
 {
   api_token: '必填项，具体机制可参考上述相关说明'
-  user_num: "用户编号",
   user: {
     user_name: "可选，用户名称",
     user_num: "可选，用户编号，确保全表唯一",
@@ -173,13 +171,13 @@ delete /api/v2/user
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
   user_num: "用户编号"
 }
 
 response:
 {
-  code: 200(成功)/401(接口权限验证失败)
+  code: 200(成功)/401(接口权限验证失败),
   message: 成功提示/失败原因
 }
 ```
@@ -191,7 +189,7 @@ post /api/v2/role
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
   role: {
     role_name: "必填，角色名称",
     memo: "可选，备注说明"
@@ -222,7 +220,7 @@ params:
 
 response:
 {
-  code: 200(成功)/401(接口权限验证失败)
+  code: 200(成功)/401(接口权限验证失败),
   message: 成功提示/失败原因,
   data: [ // 角色列表
     {
@@ -237,12 +235,11 @@ response:
 #### 更新角色
 
 ```
-put /api/v2/role
+post /api/v2/role/:id
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
-  id: "数据表标识ID",
+  api_token: '必填项，具体机制可参考上述相关说明',
   role: {
     role_name: "角色名称",
     memo: "备注说明"
@@ -251,7 +248,7 @@ params:
 
 response:
 {
-  code: 201(成功)/200(失败原因)
+  code: 201(成功)/200(失败原因),
   message: 成功提示/失败原因,
   data: { // 更新后的角色信息
     id: "数据表标识ID",
@@ -268,13 +265,13 @@ delete /api/v2/role
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
   id: "数据表标识ID"
 }
 
 response:
 {
-  code: 200(成功)/401(接口权限验证失败)
+  code: 200(成功)/401(接口权限验证失败),
   message: 成功提示/失败原因
 }
 ```
@@ -286,7 +283,7 @@ post /api/v2/group
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
   group: {
     group_name: "必填，群组名称",
     memo: "可选，备注说明"
@@ -295,7 +292,7 @@ params:
 
 response:
 {
-  code: 201(成功)/200(失败原因)
+  code: 201(成功)/200(失败原因),
   message: 成功提示/失败原因,
   data: { // 群组信息
     id: "数据表标识ID",
@@ -317,7 +314,7 @@ params:
 
 response:
 {
-  code: 200(成功)/401(接口权限验证失败)
+  code: 200(成功)/401(接口权限验证失败),
   message: 成功提示/失败原因,
   data: [ // 群组列表
     {
@@ -332,12 +329,11 @@ response:
 #### 更新群组
 
 ```
-put /api/v2/group
+put /api/v2/group/:id
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
-  id: "数据表标识ID",
+  api_token: '必填项，具体机制可参考上述相关说明',
   group: {
     group_name: "群组名称",
     memo: "备注说明"
@@ -346,7 +342,7 @@ params:
 
 response:
 {
-  code: 201(成功)/200(失败原因)
+  code: 201(成功)/200(失败原因),
   message: 成功提示/失败原因,
   data: { // 更新后的群组信息
     id: "数据表标识ID",
@@ -395,17 +391,17 @@ response:
 #### 更新用户角色权限
 
 ```
-put /api/v2/user/:user_num/roles
+post /api/v2/user/:user_num/roles
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
   role_ids: [角色ID 列表]
 }
 
 response:
 {
-  code: 201(成功)/200(失败)/401(接口权限验证失败)
+  code: 201(成功)/200(失败)/401(接口权限验证失败),
   message: 成功提示/失败原因
 }
 ```
@@ -431,17 +427,17 @@ response:
 #### 更新用户群组权限
 
 ```
-put /api/v2/user/:user_num/groups
+post /api/v2/user/:user_num/groups
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
   group_ids: [群组ID 列表]
 }
 
 response:
 {
-  code: 201(成功)/200(失败)/401(接口权限验证失败)
+  code: 201(成功)/200(失败)/401(接口权限验证失败),
   message: 成功提示/失败原因
 }
 ```
@@ -449,17 +445,17 @@ response:
 #### 更新用户冻结状态
 
 ```
-put /api/v2/user/:user_num/status
+post /api/v2/user/:user_num/status
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
   status: 1(正常)/0(冻结)
 }
 
 response:
 {
-  code: 201(成功)/200(失败)/401(接口权限验证失败)
+  code: 201(成功)/200(失败)/401(接口权限验证失败),
   message: 成功提示/失败原因
 }
 ```
@@ -467,17 +463,17 @@ response:
 #### 更新用户登录密码
 
 ```
-put /api/v2/user/:user_num/password
+post /api/v2/user/:user_num/password
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
   password: MD5 加密 32 位字符串
 }
 
 response:
 {
-  code: 201(成功)/200(失败)/401(接口权限验证失败)
+  code: 201(成功)/200(失败)/401(接口权限验证失败),
   message: 成功提示/失败原因
 }
 ```
