@@ -129,7 +129,7 @@ response:
 #### 更新用户（基本信息，不关联权限逻辑）
 
 ```
-put /api/v2/user/:user_num
+post /api/v2/user/:user_num
 
 params:
 {
@@ -329,7 +329,7 @@ response:
 #### 更新群组
 
 ```
-put /api/v2/group/:id
+post /api/v2/group/:id
 
 params:
 {
