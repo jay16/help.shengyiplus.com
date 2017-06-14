@@ -54,7 +54,7 @@
 
   * 创建时 \[code, message, data\]
   * 更新时 \[code, message, data\]
-  * 创建时 \[code, message, data\]
+  * 获取时 \[code, message, data\]
   * 删除时 \[code, message\]
 
 ### 接口交互
