@@ -27,6 +27,7 @@
 * 更新用户群组权限
 * 更新用户冻结状态
 * 更新用户登录密码
+* 重置用户登录密码
 
 ### 接口交互信息说明
 
@@ -103,19 +104,25 @@ get /api/v2/users
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
+  page: '可选，第几页，默认 0',
+  limit: '可选，每页数据项数量，默认 15'
 }
 
 response:
 {
   code: 200(成功)/401(接口权限验证失败)
   message: 成功提示/失败原因,
+  current_page: 0,
+  page_size: 15,
+  total_page: 438,
   data: [ // 用户列表
     {
       id: "数据表标识ID",
       user_name: "用户名称",
       user_num: "用户编号，确保全表唯一",
       user_pass: "登录密码，MD5 加密",
+      status: "冻结状态, true/false",
       email: "邮箱",
       mobile: "联系方式",
       tel: "手机号",
@@ -137,7 +144,7 @@ params:
   user: {
     user_name: "可选，用户名称",
     user_num: "可选，用户编号，确保全表唯一",
-    user_pass: "可选，登录密码，MD5 加密",
+    user_pass: "可选，登录密码，MD5 加密，建议使用更新密码接口",
     email: "可选，邮箱",
     mobile: "可选，联系方式",
     tel: "可选，手机号",
@@ -215,13 +222,18 @@ get /api/v2/roles
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
+  page: '可选，第几页，默认 0',
+  limit: '可选，每页数据项数量，默认 15'
 }
 
 response:
 {
   code: 200(成功)/401(接口权限验证失败),
   message: 成功提示/失败原因,
+  current_page: 0,
+  page_size: 15,
+  total_page: 13,
   data: [ // 角色列表
     {
       id: "数据表标识ID",
@@ -309,13 +321,18 @@ get /api/v2/groups
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
+  page: '可选，第几页，默认 0',
+  limit: '可选，每页数据项数量，默认 15'
 }
 
 response:
 {
   code: 200(成功)/401(接口权限验证失败),
   message: 成功提示/失败原因,
+  current_page: 0,
+  page_size: 15,
+  total_page: 21,
   data: [ // 群组列表
     {
       id: "数据表标识ID",
@@ -477,6 +494,30 @@ response:
   message: 成功提示/失败原因
 }
 ```
+
+#### 重置用户登录密码
+
+```
+post /api/v2/user/:user_num/reset_password
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明',
+  mobile: '必填项，与用户编号关联的手机号，要求业务数据维护'
+}
+
+response:
+{
+  code: 201(成功)/200(失败)/401(接口权限验证失败),
+  message: 成功提示/失败原因
+}
+```
+
+重置登录密码为随机六位数字，然后通过发送短信的形式送达至参数中的手机号。
+
+
+
+
 
 
 
