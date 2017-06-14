@@ -135,7 +135,7 @@ put /api/v2/user
 params:
 {
   api_token: '必填项，具体机制可参考上述相关说明'
-  id: "数据表标识ID",
+  user_num: "用户编号",
   user: {
     user_name: "可选，用户名称",
     user_num: "可选，用户编号，确保全表唯一",
@@ -174,7 +174,7 @@ delete /api/v2/user
 params:
 {
   api_token: '必填项，具体机制可参考上述相关说明'
-  id: "数据表标识ID"
+  user_num: "用户编号"
 }
 
 response:
