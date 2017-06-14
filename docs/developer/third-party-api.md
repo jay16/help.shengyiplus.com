@@ -38,17 +38,17 @@ post https://third-part.com/api
 
 ### 字段明细
 
-- 呼叫第三方 API 使用的 HTTP Method 为: **POST**
-- 呼叫第三方 API 时会传两个参数: 门店ID、条形码值
-- 第三方 API 的响应体
-    - `Content-Type: application/json`
-    - 响应体结构如上述简介，后面会描述业务需求
+* 呼叫第三方 API 使用的 HTTP Method 为: **POST**
+* 呼叫第三方 API 时会传两个参数: 门店ID、条形码值
+* 第三方 API 的响应体
+  * `Content-Type: application/json`
+  * 响应体结构如上述简介，后面会描述业务需求
 
 ### API 响应体
 
 扫描商品形码后用户看到结果界面两部分：
 
-- 过去十五天的销售金额趋势图
+* 过去十五天的销售金额趋势图
 
   ```
   "chart_data": {
@@ -57,7 +57,7 @@ post https://third-part.com/api
   }
   ```
 
-- 扫码商品信息及同区数据
+* 扫码商品信息及同区数据
 
   ```
   "tabs": [
@@ -75,3 +75,6 @@ post https://third-part.com/api
     }
   ]
   ```
+
+
+
