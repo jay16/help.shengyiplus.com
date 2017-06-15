@@ -395,11 +395,17 @@ get /api/v2/user/:user_num/roles
 
 response:
 {
-  code: 200(成功)/401(接口权限验证失败),
-  message: 成功提示/失败原因,
-  data: [
+  "code": 200(成功)/401(接口权限验证失败),
+  "current_page": 0,
+  "page_size": 15,
+  "total_page": 1,
+  "message": "获取用户角色列表成功",
+  "data": [
     {
-      角色信息
+      "id": 99,
+      "role_name": "胜因团队",
+      "memo": null,
+      "created_at": "2017-01-18T11:03:25.000+08:00"
     }
   ]
 }
@@ -431,11 +437,17 @@ get /api/v2/user/:user_num/groups
 
 response:
 {
-  code: 200(成功)/401(接口权限验证失败),
-  message: 成功提示/失败原因,
-  data: [
+  "code": 200(成功)/401(接口权限验证失败),
+  "current_page": 0,
+  "page_size": 15,
+  "total_page": 1,
+  "message": "获取用户群组列表成功",
+  "data": [
     {
-      群组信息
+      "id": 165,
+      "group_name": "大区",
+      "memo": null,
+      "created_at": "2016-02-03T11:30:20.000+08:00"
     }
   ]
 }
