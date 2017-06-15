@@ -1,4 +1,4 @@
 .book-header > .pull-right { display: none; }
 .book-header > .js-toolbar-action > .fa-align-justify:before { content: "\f039 目录"; }
 .book-header > .js-toolbar-action > .toggle-dropdown > .fa-font:before { content: "\f031 字体设置"; }
-.markdown-section pre { line-height: 17px !important;}
+.markdown-section pre { line-height: 16px !important;}
