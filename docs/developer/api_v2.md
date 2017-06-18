@@ -28,6 +28,7 @@
 * 更新用户冻结状态
 * 更新用户登录密码
 * 重置用户登录密码
+* 回调函数呼叫记录
 
 ### 接口交互信息说明
 
@@ -56,6 +57,8 @@
   * 更新时 \[code, message, data\]
   * 获取时 \[code, message, data\]
   * 删除时 \[code, message\]
+
+* 分页说明：起始页码为 0
 
 ### 接口交互
 
@@ -507,6 +510,8 @@ response:
 }
 ```
 
+**系统会根据配置回调第三方更新密码接口，请第三方更新密码接口特殊处理，勿再回调本系统更新密码接口，避免进入接口回调死循环**
+
 #### 重置用户登录密码
 
 ```
@@ -527,9 +532,78 @@ response:
 
 重置登录密码为随机六位数字，然后通过发送短信的形式送达至参数中的手机号。
 
+**系统会根据配置回调第三方更新密码接口，请第三方更新密码接口特殊处理，勿再回调本系统更新密码接口，避免进入接口回调死循环**
 
 
+#### 回调函数呼叫记录
 
+根据业务需要会在部分接口中执行第三方的回调函数，此接口数据只为方便调试。
 
+```
+get /api/v2/callback_action_logs
 
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+}
 
+response:
+{
+  "code": 200,
+  "message": "获取回调函数呼叫记录列表成功",
+  "current_page": 0,
+  "page_size": 15,
+  "total_page": 1,
+  "data": [
+    {
+      "id": 7,
+      "callback": "YH::Callback.update_user_password", // 本地回调接口封装函数名称
+      "url": "http://testapi.yonghui.cn/yhportal/app/api/user/updatePassword", // 回调接口链接
+      "method": "post", // 回调接口呼叫方式
+      "params": { // 回调接口传参，实际响应为 JSON 字符串
+        "openApiCode": "OPENAPI_000005",
+        "jobNumber": "80715104",
+        "password": "-",
+        "sign": "-"
+      },
+      "response": { // 回调接口呼叫后响应信息，实际响应为 JSON 字符串
+        "code": 200,
+        "message": "",
+        "body": { // 回调接口响应体
+          "msg": "修改密码成功",
+          "code": 0,
+          "data": ""
+        }
+      },
+      "backtrace": { // 回调接口整个过程的记录信息，实际响应为 JSON 字符串
+        "callback": "YH::Callback.update_user_password",
+        "params": {
+          "user_num": "80715104",
+          "user_pass": "-"
+        },
+        "response_hash": {
+          "code": 201,
+          "message": "回调函数执行成功",
+          "method": "post",
+          "callback_url": "http://testapi.yonghui.cn/yhportal/app/api/user/updatePassword",
+          "params": {
+            "openApiCode": "OPENAPI_000005",
+            "jobNumber": "80715104",
+            "password": "-",
+            "sign": "-"
+          },
+          "response": {
+            "code": 200,
+            "message": "",
+            "body": {
+              "msg": "修改密码成功",
+              "code": 0,
+              "data": ""
+            }
+          }
+        }
+      }
+    }
+  ]
+}
+```
