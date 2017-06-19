@@ -32,7 +32,7 @@
 
 ### 接口交互信息说明
 
-代码的实现理念涉及 HTTP 状态码、Web API 开发 CRUD，有实现不合理的地方欢迎交流讨论，确定问题后会第一时间修正。
+代码的实现理念涉及 [HTTP 状态码](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)、[RESTful API](http://www.csdn.net/article/2013-06-13/2815744-RESTful-API)，有实现不合理的地方欢迎交流讨论，确定问题后会第一时间修正。
 
 * API 验证参数 `api_token`
 
