@@ -109,16 +109,17 @@ params:
 {
   api_token: '必填项，具体机制可参考上述相关说明',
   page: '可选，第几页，默认 0',
-  limit: '可选，每页数据项数量，默认 15'
+  page_size: '可选，每页数据项数量，默认 15'
 }
 
 response:
 {
   code: 200(成功)/401(接口权限验证失败)
   message: 成功提示/失败原因,
-  current_page: 0,
-  page_size: 15,
-  total_page: 438,
+  current_page: 0, // 当前页码
+  page_size: 15, // 每页数量
+  total_page: 1, // 页数
+  total_count: 15, // 总数量
   data: [ // 用户列表
     {
       id: "数据表标识ID",
@@ -211,6 +212,7 @@ response:
   message: 成功提示/失败原因,
   data: { // 角色信息
     id: "数据表标识ID",
+    role_id: "角色ID",
     role_name: "角色名称",
     memo: "备注说明"
   }
@@ -226,16 +228,17 @@ params:
 {
   api_token: '必填项，具体机制可参考上述相关说明',
   page: '可选，第几页，默认 0',
-  limit: '可选，每页数据项数量，默认 15'
+  page_size: '可选，每页数据项数量，默认 15'
 }
 
 response:
 {
   code: 200(成功)/401(接口权限验证失败),
   message: 成功提示/失败原因,
-  current_page: 0,
-  page_size: 15,
-  total_page: 13,
+  current_page: 0, // 当前页码
+  page_size: 15, // 每页数量
+  total_page: 1, // 页数
+  total_count: 15, // 总数量
   data: [ // 角色列表
     {
       id: "数据表标识ID",
@@ -325,16 +328,17 @@ params:
 {
   api_token: '必填项，具体机制可参考上述相关说明',
   page: '可选，第几页，默认 0',
-  limit: '可选，每页数据项数量，默认 15'
+  page_size: '可选，每页数据项数量，默认 15'
 }
 
 response:
 {
   code: 200(成功)/401(接口权限验证失败),
   message: 成功提示/失败原因,
-  current_page: 0,
-  page_size: 15,
-  total_page: 21,
+  current_page: 0, // 当前页码
+  page_size: 15, // 每页数量
+  total_page: 1, // 页数
+  total_count: 15, // 总数量
   data: [ // 群组列表
     {
       id: "数据表标识ID",
@@ -397,14 +401,16 @@ get /api/v2/user/:user_num/roles
 
 response:
 {
-  "code": 200(成功)/401(接口权限验证失败),
-  "current_page": 0,
-  "page_size": 15,
-  "total_page": 1,
-  "message": "获取用户角色列表成功",
+  code: 200(成功)/401(接口权限验证失败),
+  message: 成功提示/失败原因,
+  current_page: 0, // 当前页码
+  page_size: 15, // 每页数量
+  total_page: 1, // 页数
+  total_count: 15, // 总数量
   "data": [
     {
       "id": 99,
+      "role_id": 29,
       "role_name": "胜因团队",
       "memo": null,
       "created_at": "2017-01-18T11:03:25.000+08:00"
@@ -439,11 +445,12 @@ get /api/v2/user/:user_num/groups
 
 response:
 {
-  "code": 200(成功)/401(接口权限验证失败),
-  "current_page": 0,
-  "page_size": 15,
-  "total_page": 1,
-  "message": "获取用户群组列表成功",
+  code: 200(成功)/401(接口权限验证失败),
+  message: 成功提示/失败原因,
+  current_page: 0, // 当前页码
+  page_size: 15, // 每页数量
+  total_page: 1, // 页数
+  total_count: 15, // 总数量
   "data": [
     {
       "id": 165,
@@ -546,11 +553,12 @@ params:
 
 response:
 {
-  "code": 200,
-  "message": "获取回调函数呼叫记录列表成功",
-  "current_page": 0,
-  "page_size": 15,
-  "total_page": 1,
+  code: 200,
+  message: 成功提示/失败原因,
+  current_page: 0, // 当前页码
+  page_size: 15, // 每页数量
+  total_page: 1, // 页数
+  total_count: 15, // 总数量
   "data": [
     {
       "id": 7,
@@ -564,11 +572,11 @@ response:
         "sign": "-"
       },
       "response": { // 回调接口呼叫后响应信息，实际响应为 JSON 字符串
-        "code": 200,
-        "message": "",
+        code: 200,
+        message: "",
         "body": { // 回调接口响应体
           "msg": "修改密码成功",
-          "code": 0,
+          code: 0,
           "data": ""
         }
       },
@@ -579,8 +587,8 @@ response:
           "user_pass": "-"
         },
         "response_hash": {
-          "code": 201,
-          "message": "回调函数执行成功",
+          code: 201,
+          message: "回调函数执行成功",
           "method": "post",
           "callback_url": "http://testapi.yonghui.cn/yhportal/app/api/user/updatePassword",
           "params": {
@@ -590,11 +598,11 @@ response:
             "sign": "-"
           },
           "response": {
-            "code": 200,
-            "message": "",
+            code: 200,
+            message: "",
             "body": {
               "msg": "修改密码成功",
-              "code": 0,
+              code: 0,
               "data": ""
             }
           }
