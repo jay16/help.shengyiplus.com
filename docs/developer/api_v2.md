@@ -15,20 +15,29 @@
 * 删除用户
 * 创建角色
 * 获取角色列表
+* 获取用户角色权限列表
 * 更新角色
+* 更新用户角色权限
 * 删除角色
 * 创建群组
 * 获取群组列表
-* 更新群组
-* 删除群组
-* 获取用户角色权限列表
-* 更新用户角色权限
 * 获取用户群组权限列表
+* 更新群组
 * 更新用户群组权限
+* 删除群组
 * 更新用户冻结状态
 * 更新用户登录密码
 * 重置用户登录密码
 * 回调函数呼叫记录
+* 获取报表列表
+* 获取分析列表
+* 获取某分析的角色权限列表
+* 获取某角色的分析权限列表
+* 更新某分析的角色权限
+* 获取应用列表
+* 获取某应用的角色权限列表
+* 获取某角色的应用权限列表
+* 更新某应用的角色权限
 
 ### 接口交互信息说明
 
@@ -610,5 +619,287 @@ response:
       }
     }
   ]
+}
+```
+
+#### 获取报表列表
+
+```
+get /api/v2/reports
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+}
+
+response:
+{
+  "code": 200,
+  "message": "获取数据列表成功",
+  "current_page": 0,
+  "page_size": 15,
+  "total_page": 3,
+  "total_count": 38,
+  "data": [
+    {
+      "id": 8,
+      "title": "第二集群销售额",
+      "report_id": 8,
+      "template_id": 4,
+      "has_audio": false,
+      "health_value": 0,
+      "remark": "无备注",
+      "created_at": "16-01-07 08:28:45",
+      "updated_at": "17-06-06 14:56:18"
+    }
+  ]
+}
+```
+
+#### 获取分析列表
+
+```
+get /api/v2/analyses
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+}
+
+response:
+{
+  "code": 200,
+  "message": "获取数据列表成功",
+  "current_page": 0,
+  "page_size": 15,
+  "total_page": 2,
+  "total_count": 16,
+  "data": [
+    {
+      "id": 13,
+      "name": "第二集群目标",
+      "category": "销售分析",
+      "group_name": "Bravo目标管理",
+      "link_path": "/mobile/v2/group/%@/template/4/report/13",
+      "publicly": false,
+      "icon": "icon-default.png",
+      "icon_link": "http://yonghui-test.idata.mobi/images/icon-default.png",
+      "group_id": 13,
+      "health_value": 0,
+      "group_order": 45,
+      "item_order": 1,
+      "created_at": "2017-05-14T17:09:41.000+08:00"
+    }
+  ]
+}
+```
+
+#### 获取某分析的角色权限列表
+
+```
+get /api/v2/analyse/:analyse_id/roles
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+}
+
+response:
+{
+  "code": 200,
+  "message": "获取数据列表成功",
+  "current_page": 0,
+  "page_size": 15,
+  "total_page": 2,
+  "total_count": 25,
+  "data": [
+    {
+      "id": 13,
+      "role_id": 26,
+      "role_name": "筹建",
+      "memo": null,
+      "created_at": "2017-06-07T14:28:29.000+08:00"
+    }
+  ]
+}
+```
+
+#### 获取某角色的分析权限列表
+
+```
+get /api/v2/role/:role_id/analyses
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+}
+
+response:
+{
+  "code": 200,
+  "message": "获取数据列表成功",
+  "current_page": 0,
+  "page_size": 15,
+  "total_page": 2,
+  "total_count": 25,
+  "data": [
+    {
+      "id": 13,
+      "name": "第二集群目标",
+      "category": "销售分析",
+      "group_name": "Bravo目标管理",
+      "link_path": "/mobile/v2/group/%@/template/4/report/13",
+      "publicly": false,
+      "icon": "icon-default.png",
+      "icon_link": "http://yonghui-test.idata.mobi/images/icon-default.png",
+      "group_id": 13,
+      "health_value": 0,
+      "group_order": 45,
+      "item_order": 1,
+      "created_at": "2017-05-14T17:09:41.000+08:00"
+    }
+  ]
+}
+```
+
+#### 更新某分析的角色权限
+
+```
+post /api/v2/analyse/:analyse_id/roles
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明',
+  role_ids: [sys_roles.role_id]
+}
+
+response:
+{
+  code: 201,
+  message: '数据更新成功'
+}
+```
+
+#### 获取应用列表
+
+```
+get /api/v2/apps
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+}
+
+response:
+{
+  "code": 200,
+  "message": "获取数据列表成功",
+  "current_page": 0,
+  "page_size": 15,
+  "total_page": 2,
+  "total_count": 25,
+  "data": [
+    {
+      "id": 1,
+      "name": "2017赛马指标计算规则",
+      "category": null,
+      "group_name": "学习文档",
+      "link_path": "http://123.59.75.85:8080/yhportal/appClientReport/pdf/horseRacingRules.pdf",
+      "publicly": false,
+      "icon": "icon-default.png",
+      "icon_link": "http://yonghui-test.idata.mobi/images/icon-default.png",
+      "group_id": 1,
+      "health_value": 0,
+      "group_order": null,
+      "item_order": null,
+      "created_at": "2017-06-19T09:57:55.000+08:00"
+    }
+  ]
+}
+```
+
+#### 获取某应用的角色权限列表
+
+```
+get /api/v2/app/:app_id/roles
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+}
+
+response:
+{
+  "code": 200,
+  "message": "获取数据列表成功",
+  "current_page": 0,
+  "page_size": 15,
+  "total_page": 2,
+  "total_count": 25,
+  "data": [
+    {
+      "id": 6,
+      "role_id": 2,
+      "role_name": "信息部",
+      "memo": null,
+      "created_at": null
+    }
+  ]
+}
+```
+
+#### 获取某角色的应用权限列表
+
+```
+get /api/v2/role/:role_id/apps
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+}
+
+response:
+{
+  "code": 200,
+  "message": "获取数据列表成功",
+  "current_page": 0,
+  "page_size": 15,
+  "total_page": 2,
+  "total_count": 25,
+  "data": [
+    {
+      "id": 1,
+      "name": "2017赛马指标计算规则",
+      "category": null,
+      "group_name": "学习文档",
+      "link_path": "http://123.59.75.85:8080/yhportal/appClientReport/pdf/horseRacingRules.pdf",
+      "publicly": false,
+      "icon": "icon-default.png",
+      "icon_link": "http://yonghui-test.idata.mobi/images/icon-default.png",
+      "group_id": 1,
+      "health_value": 0,
+      "group_order": null,
+      "item_order": null,
+      "created_at": "2017-06-19T09:57:55.000+08:00"
+    }
+  ]
+}
+```
+
+#### 更新某应用的角色权限
+
+```
+post /api/v2/app/:app_id/roles
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明',
+  role_ids: [sys_roles.role_id]
+}
+
+response:
+{
+  code: 201,
+  message: '数据更新成功'
 }
 ```
