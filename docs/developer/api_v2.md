@@ -10,6 +10,7 @@
 待实现、已实现的接口都在列表中，接口是否实现以该接口说明段落中的状态为主。
 
 * 创建用户
+* 获取用户
 * 获取用户列表
 * 更新用户（基本信息，不关联权限逻辑）
 * 删除用户
@@ -108,6 +109,70 @@ response:
     join_date: "入职日期，格式 yyyy-mm-dd HH:MM:SS",
     position: "职位"
   }
+}
+```
+
+#### 获取用户
+
+```
+get /api/v2/user/:user_num
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+}
+
+response:
+{
+  code: 200(成功)/401(接口权限验证失败),
+  "gravatar": "",
+  "store_ids_hash": "[]",
+  "active_flag": "1",
+  "last_login_browser": "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Mobile/14E304",
+  "access_token": "",
+  "group_name": "大区(全部)商行(全部)",
+  "user_name": "李俊杰",
+  "id": "99901",
+  "last_login_ip": "223.89.32.0",
+  "join_date": "",
+  "login_duration": "2",
+  "dept_name": "胜因团队",
+  "mobile": "13564379606",
+  "surpass_percentage": 0.7,
+  "role_id": "99",
+  "browse_report_count": "7",
+  "tel": "",
+  "browse_distinct_count": "7",
+  "browser_count": "26",
+  "user_num": "13564379606",
+  "updated_at": "2017-01-18 10:59:43 +0800",
+  "browse_count": "34",
+  "user_pass": "-",
+  "created_at": "2017-01-18 10:59:43 +0800",
+  "dept_id": "",
+  "status": "true",
+  "group_id": "165",
+  "role_name": "胜因团队",
+  "email": "jay_li@intfocus.com",
+  "user_id": "99901",
+  "login_day_num": "2",
+  "last_login_version": "api#v1",
+  "sign_in_count": "30",
+  "login_count": "3",
+  "position": "",
+  "last_login_at": "2017-04-20 12:39:23 +0800",
+  "store_ids_string": "",
+  "loading_md5": "8bd5c6a91d38848d3160e6c8a462b852",
+  "assets_md5": "03733e177232bfeb43808a445268c29d",
+  "assets": {
+    "fonts_md5": "5901960c857600316c3d141401c3af08",
+    "icons_md5": "655319ed85950ce2b16f39f63e741b8b",
+    "images_md5": "c339fffd9ad0c99cfae359463da14c30",
+    "javascripts_md5": "87f389bc3ef271eab2028c01b42a63b6",
+    "stylesheets_md5": "793b7b251b42ac81948c70a548323e66"
+  },
+  "BarCodeScan_md5": "f5c813c351d6d1666d5504851ad1ef55",
+  "advertisement_md5": "0239802a086466ec31d566ca910da0c9",
 }
 ```
 
