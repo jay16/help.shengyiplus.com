@@ -14,10 +14,11 @@
 * [常见问题]()
     * [安装问题](/docs/FAQ/faq.md)
     * [报表问题](/docs/FAQ/module-report.md)
-* [开发约束]()
+* [开发文档]()
     * [应用模块](/docs/developer/module-app.md)
     * [JS 交互原生代码接口](/docs/developer/js-native-bridge.md)
     * [JS 接口源代码](/docs/developer/syp_v1.js.md)
     * [支持第三方服务的接口](/docs/developer/third-party-api.md)
+    * [报表权限说明](/docs/developer/report-privileges.md)
     * [`API#v2` 接口](/docs/developer/api_v2.md)
 
