@@ -361,17 +361,17 @@ response:
 ##### 获取角色
 
 ```
-post /api/v2/role/:role_id
+get /api/v2/role/:role_id
 
 params:
 {
   api_token: '必填项，具体机制可参考上述相关说明',
-  role_"id": 角色ID
+  role_id: 角色ID
 }
 
 response:
 {
-  code: 201(成功)/200(失败原因)
+  code: 200(成功)/其他(失败原因)
   message: 成功提示/失败原因,
   data: { // 角色信息
     "id": "数据表标识ID",
@@ -444,6 +444,12 @@ response:
 
 ```
 get /api/v2/user/:user_num/roles
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明',
+  lazy_load: 加载所有角色（默认可不传该参数）
+}
 
 response:
 {
@@ -764,7 +770,8 @@ get /api/v2/kpi/:id/roles
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
+  lazy_load: 加载所有角色（默认可不传该参数）
 }
 
 response:
@@ -1023,7 +1030,8 @@ get /api/v2/analyse/:analyse_id/roles
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
+  lazy_load: 加载所有角色（默认可不传该参数）
 }
 
 response:
@@ -1247,7 +1255,8 @@ get /api/v2/app/:app_id/roles
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
+  lazy_load: 加载所有角色（默认可不传该参数）
 }
 
 response:
