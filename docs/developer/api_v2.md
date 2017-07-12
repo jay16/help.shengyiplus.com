@@ -650,7 +650,7 @@ post /api/v2/kpi
 params:
 {
   api_token: '必填项，具体机制可参考上述相关说明',
-  analyse: {
+  kpi: {
     name: "标题",
     category: "一级分类",
     group_name: "二级分组",
@@ -668,15 +668,176 @@ response:
 
 ##### 获取仪表盘
 
-代码已实现，文档 TODO
+```
+get /api/v2/kpi/:id
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明',
+  id: 数据库标识
+}
+
+response:
+{
+  "code": 200,
+  "message": "查询成功",
+  "data": {
+    "id": 8,
+    "kpi_id": 8,
+    "kpi_name": "第二集群销售额",
+    "kpi_group": "生意概况",
+    "chart_type": "number3",
+    "url": "/mobile/v2/group/%@/template/4/report/8",
+    "publicly": null,
+    "group_order": 16,
+    "item_order": 1
+  }
+}
+```
 
 ##### 更新仪表盘
 
-代码已实现，文档 TODO
+```
+post /api/v2/kpi/:id
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明',
+  kpi: {
+    "kpi_id": 8,
+    "kpi_name": "第二集群销售额",
+    "kpi_group": "生意概况",
+    "chart_type": "number3",
+    "url": "/mobile/v2/group/%@/template/4/report/8",
+    "publicly": null,
+    "group_order": 16,
+    "item_order": 1
+  }
+}
+
+response:
+{
+  "code": 201,
+  "message": "更新成功"
+}
+```
 
 ##### 获取仪表盘列表
 
-代码已实现，文档 TODO
+```
+get /api/v2/kpis
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+}
+
+response:
+{
+  "code": 200,
+  "message": "获取数据列表成功",
+  "current_page": 0,
+  "page_size": 15,
+  "total_page": 2,
+  "total_count": 19,
+  "data": [
+    {
+      "id": 8,
+      "kpi_id": 8,
+      "kpi_name": "第二集群销售额",
+      "kpi_group": "生意概况",
+      "chart_type": "number3",
+      "url": "/mobile/v2/group/%@/template/4/report/8",
+      "publicly": null,
+      "group_order": 16,
+      "item_order": 1
+    }
+  ]
+}
+```
+
+
+#### 获取某仪表盘的角色权限列表
+
+```
+get /api/v2/kpi/:id/roles
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+}
+
+response:
+{
+  "code": 200,
+  "message": "获取数据列表成功",
+  "current_page": 0,
+  "page_size": 15,
+  "total_page": 2,
+  "total_count": 25,
+  data: [
+    {
+      "id": 13,
+      "role_id": 26,
+      "role_name": "筹建",
+      "memo": null,
+      "created_at": "2017-06-07T14:28:29.000+08:00"
+    }
+  ]
+}
+```
+
+#### 获取某角色的仪表盘权限列表
+
+```
+get /api/v2/role/:role_id/kpis
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+}
+
+response:
+{
+  "code": 200,
+  "message": "获取数据列表成功",
+  "current_page": 0,
+  "page_size": 15,
+  "total_page": 2,
+  "total_count": 25,
+  data: [
+    {
+      "id": 8,
+      "kpi_id": 8,
+      "kpi_name": "第二集群销售额",
+      "kpi_group": "生意概况",
+      "chart_type": "number3",
+      "url": "/mobile/v2/group/%@/template/4/report/8",
+      "publicly": null,
+      "group_order": 16,
+      "item_order": 1
+    }
+  ]
+}
+```
+
+#### 更新某仪表盘的角色权限
+
+```
+post /api/v2/kpi/:id/roles
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明',
+  role_ids: [sys_roles.role_id]
+}
+
+response:
+{
+  code: 201,
+  message: '数据更新成功'
+}
+```
 
 
 #### 获取报表列表
