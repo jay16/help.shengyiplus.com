@@ -23,41 +23,47 @@
     - 获取角色 *
     - 更新角色
     - 获取角色列表
-    - 获取用户角色权限列表
     - 更新用户角色权限
+    - 获取用户角色权限列表
 
 - 群组
     - 创建群组
-    - 获取群组 *
+    - 获取群组
     - 更新群组
     - 获取群组列表
     - 获取用户群组权限列表
-    - 更新用户群组权限
+    - 更新用户群组权限列表
 
 - 生意概况（仪表盘）
     - 创建仪表盘
-    - 获取仪表盘 *
-    - 更新仪表盘 *
+    - 获取仪表盘
+    - 更新仪表盘
     - 获取仪表盘列表
-    - 获取报表列表
+    - 获取仪表盘的角色权限列表
+    - 更新仪表盘的角色权限列表
+    - 获取角色的仪表盘权限列表
+    - 更新角色的仪表盘权限列表
 
 - 报表（分析）
     - 创建分析
-    - 获取分析 *
-    - 更新分析 *
+    - 获取分析
+    - 更新分析
     - 获取分析列表
-    - 获取某分析的角色权限列表
-    - 获取某角色的分析权限列表
-    - 更新某分析的角色权限
+    - 获取分析的角色权限列表
+    - 更新分析的角色权限列表
+    - 获取角色的分析权限列表
+    - 更新角色的分析权限列表
 
 - 专题（应用）
     - 创建应用
     - 获取应用 *
     - 更新应用 *
     - 获取应用列表
-    - 获取某应用的角色权限列表
-    - 获取某角色的应用权限列表
-    - 更新某应用的角色权限
+    - 获取应用的角色权限列表
+    - 获取角色的应用权限列表
+    - 更新应用的角色权限列表
+    - 获取角色的应用权限列表
+    - 更新角色的应用权限列表
 
 - 其他
     - 回调函数呼叫记录
@@ -763,7 +769,7 @@ response:
 ```
 
 
-#### 获取某仪表盘的角色权限列表
+#### 获取仪表盘的角色权限列表
 
 ```
 get /api/v2/kpi/:id/roles
@@ -794,7 +800,25 @@ response:
 }
 ```
 
-#### 获取某角色的仪表盘权限列表
+#### 更新仪表盘的角色权限列表
+
+```
+post /api/v2/kpi/:id/roles
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明',
+  role_ids: [sys_roles.role_id]
+}
+
+response:
+{
+  code: 201,
+  message: '数据更新成功'
+}
+```
+
+#### 获取角色的仪表盘权限列表
 
 ```
 get /api/v2/role/:role_id/kpis
@@ -828,15 +852,15 @@ response:
 }
 ```
 
-#### 更新某仪表盘的角色权限
+#### 更新角色的仪表盘权限列表
 
 ```
-post /api/v2/kpi/:id/roles
+post /api/v2/role/:role_id/kpis
 
 params:
 {
   api_token: '必填项，具体机制可参考上述相关说明',
-  role_ids: [sys_roles.role_id]
+  kpi_ids: []
 }
 
 response:
@@ -1023,7 +1047,7 @@ response:
 }
 ```
 
-#### 获取某分析的角色权限列表
+#### 获取分析的角色权限列表
 
 ```
 get /api/v2/analyse/:analyse_id/roles
@@ -1054,7 +1078,25 @@ response:
 }
 ```
 
-#### 获取某角色的分析权限列表
+#### 更新分析的角色权限列表
+
+```
+post /api/v2/analyse/:analyse_id/roles
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明',
+  role_ids: [sys_roles.role_id]
+}
+
+response:
+{
+  code: 201,
+  message: '数据更新成功'
+}
+```
+
+#### 获取角色的分析权限列表
 
 ```
 get /api/v2/role/:role_id/analyses
@@ -1092,15 +1134,15 @@ response:
 }
 ```
 
-#### 更新某分析的角色权限
+#### 更新角色的分析权限列表
 
 ```
-post /api/v2/analyse/:analyse_id/roles
+post /api/v2/role/:role_id/analyses
 
 params:
 {
   api_token: '必填项，具体机制可参考上述相关说明',
-  role_ids: [sys_roles.role_id]
+  analyse_ids: []
 }
 
 response:
@@ -1248,7 +1290,7 @@ response:
 }
 ```
 
-#### 获取某应用的角色权限列表
+#### 获取应用的角色权限列表
 
 ```
 get /api/v2/app/:app_id/roles
@@ -1279,7 +1321,25 @@ response:
 }
 ```
 
-#### 获取某角色的应用权限列表
+#### 更新应用的角色权限列表
+
+```
+post /api/v2/app/:app_id/roles
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明',
+  role_ids: [sys_roles.role_id]
+}
+
+response:
+{
+  code: 201,
+  message: '数据更新成功'
+}
+```
+
+#### 获取角色的应用权限列表
 
 ```
 get /api/v2/role/:role_id/apps
@@ -1317,15 +1377,15 @@ response:
 }
 ```
 
-#### 更新某应用的角色权限
+#### 更新角色的应用权限列表
 
 ```
-post /api/v2/app/:app_id/roles
+post /api/v2/role/:role_id/apps
 
 params:
 {
   api_token: '必填项，具体机制可参考上述相关说明',
-  role_ids: [sys_roles.role_id]
+  app_ids: []
 }
 
 response:
