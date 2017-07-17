@@ -663,10 +663,10 @@ params:
 {
   api_token: '必填项，具体机制可参考上述相关说明',
   kpi: {
-    name: "标题",
-    category: "一级分类",
-    group_name: "二级分组",
-    url_path: '访问链接',
+    kpi_id: "必填,业务ID",
+    kpi_group: "分类",
+    kpi_name: "标题",
+    link: '必填,报表ID',
     publicly: 是否公开通用（无权限设置，所有角色可看）
   }
 }

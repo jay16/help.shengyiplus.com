@@ -31,7 +31,19 @@ content | text | Y | 通知的内容
 notify_mode | string | 默认 sms| 通知的类型（sms/push）
 notify_level |  int | 默认 1 | 通知的优先级（1-10）
 receivers | text | Y | 接收者（用户编号，多个使用半角逗号分隔）
+extra_params_string | string | 额外参数（JSON 格式）
 
+当前消息类型为推送消息时，字段 `extra_params_string` 为跳转需要的参数：(字符串格式的 JSON 内容)
+
+```
+{
+  type: kpi/app/analyse/message/thursday_say/report, // 必填
+  title: '16年第三季度季报’, // 可选
+  url: 'report-link’,      // 可选，与 API 链接格式相同
+  obj_id: 1,               // 可选，目标ID
+  obj_type: 1              // 可选，目标类型
+}
+```
 
 - 通知类型为**推送消息**时，需判断接收者是否登录过客户端（注册推送消息的 token），以便测试客户端接收消息的推送状态。
 
