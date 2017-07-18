@@ -424,7 +424,8 @@ params:
 {
   api_token: '必填项，具体机制可参考上述相关说明',
   page: '可选，第几页，默认 0',
-  page_size: '可选，每页数据项数量，默认 15'
+  page_size: '可选，每页数据项数量，默认 15',
+  role_name: '选填，筛选项，赋值时具有过滤功能'
 }
 
 response:
@@ -586,7 +587,8 @@ params:
 {
   api_token: '必填项，具体机制可参考上述相关说明',
   page: '可选，第几页，默认 0',
-  page_size: '可选，每页数据项数量，默认 15'
+  page_size: '可选，每页数据项数量，默认 15',
+  group_name: '选填，筛选项，赋值时具有过滤功能'
 }
 
 response:
@@ -741,7 +743,9 @@ get /api/v2/kpis
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
+  kpi_group: '选择，筛选项，赋值时具有过滤功能',
+  kpi_name: '选填，筛选项，赋值时具有过滤功能'
 }
 
 response:
@@ -768,6 +772,7 @@ response:
 }
 ```
 
+多个筛选项时，使用 `AND` 逻辑过滤数据。
 
 #### 获取仪表盘的角色权限列表
 
@@ -777,7 +782,7 @@ get /api/v2/kpi/:id/roles
 params:
 {
   api_token: '必填项，具体机制可参考上述相关说明',
-  lazy_load: 加载所有角色（默认可不传该参数）
+  lazy_load: '加载所有角色（默认可不传该参数）'
 }
 
 response:
@@ -1016,7 +1021,9 @@ get /api/v2/analyses
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
+  group_name: '选填，筛选项，赋值时具有过滤功能',
+  name: '选填，筛选项，赋值时具有过滤功能'
 }
 
 response:
@@ -1259,7 +1266,9 @@ get /api/v2/apps
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: '必填项，具体机制可参考上述相关说明',
+  group_name: '选填，筛选项，赋值时具有过滤功能',
+  name: '选填，筛选项，赋值时具有过滤功能'
 }
 
 response:
