@@ -48,17 +48,17 @@ extra_params_string | string | 额外参数（JSON 格式）
 - 通知类型为**推送消息**时，需判断接收者是否登录过客户端（注册推送消息的 token），以便测试客户端接收消息的推送状态。
 
     ```
-    select name
-          , platform
-          , os
-          , os_version
-          , push_device_token
-      from sys_devices
-     where id in (
-      select device_id
-        from sys_user_devices
-       where user_num in ('mock-user')
-         and length(push_device_token) > 0
+    select sd.name
+          , sd.platform
+          , sd.os
+          , sd.os_version
+          , sd.push_device_token
+      from sys_devices as sd
+     where sd.id in (
+      select sud.device_id
+        from sys_user_devices as sud
+       where sud.user_num in ('mock-user')
+         and length(sd.push_device_token) > 0
     )
     ```
 
