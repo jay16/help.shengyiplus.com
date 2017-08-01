@@ -66,6 +66,8 @@
     - 更新角色的应用权限列表
 
 - 其他
+    - 地址转经纬度
+    - 经纬度转地址
     - 回调函数呼叫记录
 
 ### 接口交互信息说明
@@ -1429,6 +1431,44 @@ response:
   message: '数据更新成功'
 }
 ```
+
+### 其他 
+
+#### 地址转经纬度
+
+```
+get /api/v2/address_to_location
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明',
+  address: '具体地址'
+}
+
+response:
+{
+  code: 200,
+  message: 'successfully',
+  data: '经度,纬度'
+}
+
+#### 经纬度转地址
+
+```
+get /api/v2/location_to_address
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明',
+  location: 经度,纬度'
+}
+
+response:
+{
+  code: 200,
+  message: 'successfully',
+  data: '具体地址'
+}
 
 #### 回调函数呼叫记录
 
