@@ -65,6 +65,13 @@
     - 获取角色的应用权限列表
     - 更新角色的应用权限列表
 
+- 工具箱
+    - 获取工具箱列表
+    - 获取工具箱的角色列表
+    - 获取角色的工具箱列表
+    - 更新工具箱的角色列表
+    - 更新角色的工具箱列表
+
 - 其他
     - 回调函数呼叫记录
 
@@ -75,7 +82,8 @@
 * API 验证参数 `api_token`
 
   * 必填项，否则响应无权限 401
-  * 当前状态未对该参数作判断，只要有值就可以（TODO: API 接口验证机制）
+  * api_token = MD5 加载 `{key}{api_path}{key}`
+  * 请联系开发人员申请key
 
 * CRUD 分别对应的 HTTP 状态码
 
@@ -1427,6 +1435,156 @@ response:
 {
   code: 201,
   message: '数据更新成功'
+}
+```
+
+### 工具箱
+
+工具箱是用户的应用集，即用户便捷使用应用的快速入口；工具箱是特殊场景下的应用。
+
+工具箱的增删改查即对应用的操作。
+
+#### 获取工具箱列表
+
+获取所有的工具箱应用列表。
+
+```
+post /api/v2/list/toolbox
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+}
+
+response:
+{
+  "code": 200,
+  "message": "获取数据列表成功",
+  "current_page": 0,
+  "page_size": 15,
+  "total_page": 1,
+  "total_count": 5,
+  "data": [
+    {
+      "id": 9911,
+      "name": "门店巡检",
+      "category": "1",
+      "group_name": "测试",
+      "link_path": "http://development.shengyiplus.com/websites/shop-patrol/inspection/default.html",
+      "publicly": false,
+      "icon": "icon-icon_xunjian.png",
+      "icon_link": "http://localhost:4567/images/icon-icon_xunjian.png",
+      "group_id": 9911,
+      "health_value": 0,
+      "group_order": null,
+      "item_order": null,
+      "created_at": "2017-07-31T11:45:28.000+08:00"
+    }
+  ]
+}
+```
+
+#### 获取工具箱的角色列表
+
+```
+get /api/v2/toolbox/:app_id/roles
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+}
+
+response:
+{
+  "code": 200,
+  "message": "获取数据列表成功",
+  "current_page": 0,
+  "page_size": 15,
+  "total_page": 2,
+  "total_count": 30,
+  "data": [
+    {
+      "id": 2,
+      "role_id": 18,
+      "role_name": "会员店",
+      "memo": null,
+      "created_at": null
+    }
+  ]
+}
+```
+
+#### 获取角色的工具箱列表
+
+```
+get /api/v2/role/:role_id/toolbox
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明'
+}
+
+response:
+{
+  "code": 200,
+  "message": "获取数据列表成功",
+  "current_page": 0,
+  "page_size": 15,
+  "total_page": 3,
+  "total_count": 36,
+  "data": [
+    {
+      "id": 1,
+      "name": "2017赛马指标计算规则",
+      "category": "1",
+      "group_name": "学习文档",
+      "link_path": "http://123.59.75.85:8080/yhportal/appClientReport/pdf/horseRacingRules.pdf",
+      "publicly": false,
+      "icon": "icon-default.png",
+      "icon_link": "http://localhost:4567/images/icon-default.png",
+      "group_id": 1,
+      "health_value": 0,
+      "group_order": 15,
+      "item_order": 1,
+      "created_at": "2017-06-19T09:57:55.000+08:00"
+    }
+  ]
+}
+```
+
+#### 更新工具箱的角色列表
+
+```
+post /api/v2/toolbox/:app_id/roles
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明',
+  role_ids: [角色ID]
+}
+
+response:
+{
+  "message": "更新成功",
+  "code": 201
+}
+```
+
+#### 更新角色的工具箱列表
+
+```
+post /api/v2/role/:role_id/toolbox
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明',
+  app_ids: [应用ID]
+}
+
+response:
+{
+  "message": "更新成功",
+  "code": 201
 }
 ```
 
