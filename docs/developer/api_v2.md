@@ -84,7 +84,7 @@
 * API 验证参数 `api_token`
 
   * 必填项，否则响应无权限 401
-  * api_token = MD5 加载 `{key}{api_path}{key}`
+  * api_token = MD5 加密 `{key}{api_path}{key}`
   * 请联系开发人员申请key
 
 * CRUD 分别对应的 HTTP 状态码
@@ -346,6 +346,28 @@ response:
 重置登录密码的操作：随机六位数字更新为用户登录密码，然后通过手机短信的形式送达至参数中的手机号。
 
 **系统会根据配置回调第三方更新密码接口，请第三方更新密码接口特殊处理，勿再回调本系统更新密码接口，避免进入接口回调死循环**。
+
+#### 刷新用户缓存
+
+```
+post /api/v2/refresh/user_cache
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明',
+  user_nums: '必填项，要重置的用户编号，多个以逗号分隔'
+}
+
+response:
+{
+  code: 201(成功)/200(失败)/401(接口权限验证失败),
+  message: 成功提示/失败原因,
+  data: {
+      success: [刷新成功的用户编号列表],
+      failed: [刷新失败的用户编号列表]
+  }
+}
+```
 
 #### 角色
 
@@ -942,10 +964,11 @@ params:
   api_token: '必填项，具体机制可参考上述相关说明',
   analyse: {
     name: "标题",
+    group_id: "业务ID", // 角色资源关联时使用（若不设置，则与自增型 id 一致）
     category: "一级分类",
     group_name: "二级分组",
-    url_path: '访问链接',
-    publicly: 是否公开通用（无权限设置，所有角色可看）
+    report_id: '报表ID',
+    publicly: 0/1, // 是否公开通用（无权限设置，所有角色可看）
   }
 }
 
@@ -961,6 +984,8 @@ response:
 配置**新菜单项**时需要配置已存在的报表ID或第三方链接，若系统无此报表应该先配置报表获取到报表ID 再来配置菜单项。
 
 原因：此菜单项仅是 APP 模块中的功能快速入口，入口后的报表才是用户使用的重点，业务需求此配置为必填选。
+
+关于业务ID(group_id): 若无明确业务ID, 创建分析时可留空，接口中创建成功后更新更新 group_id = id
 
 #### 获取分析
 
@@ -1009,9 +1034,10 @@ params:
   api_token: '必填项，具体机制可参考上述相关说明',
   analyse: {
     name: "标题",
+    group_id: "业务ID", // 角色资源关联时使用（若不设置，则与自增型 id 一致）
     category: "一级分类",
     group_name: "二级分组",
-    url_path: '访问链接',
+    report_id: '报表ID',
     publicly: 是否公开通用（无权限设置，所有角色可看）
   }
 }
@@ -1022,6 +1048,7 @@ response:
   message: '更新成功',
   data: {
     "id": 13,
+    group_id: "业务ID", // 角色资源关联时使用
     "name": "第二集群目标",
     "category": "销售分析",
     "group_name": "Bravo目标管理",
@@ -1199,9 +1226,11 @@ params:
   api_token: '必填项，具体机制可参考上述相关说明',
   app: {
     name: "标题",
+    group_id: "业务ID", // 角色资源关联时使用（若不设置，则与自增型 id 一致）
     category: "一级分类",
     group_name: "二级分组",
-    url_path: '访问链接',
+    url_path: '第三方链接', // url_path/report_id 二选一配置即可
+    report_id: '报表ID', // url_path/report_id 二选一配置即可
     publicly: 是否公开通用（无权限设置，所有角色可看）
   }
 }
@@ -1218,6 +1247,8 @@ response:
 配置**新菜单项**时需要配置已存在的报表ID或第三方链接，若系统无此报表应该先配置报表获取到报表ID 再来配置菜单项。
 
 原因：此菜单项仅是 APP 模块中的功能快速入口，入口后的报表才是用户使用的重点，业务需求此配置为必填选。
+
+关于业务ID(group_id): 若无明确业务ID, 创建分析时可留空，接口中创建成功后更新更新 group_id = id
 
 #### 获取应用
 
@@ -1259,12 +1290,14 @@ post /api/v2/app/:id
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: '必填项，具体机制可参考上述相关说明',（若不设置，则与自增型 id 一致）
   app: {
     name: "标题",
+    group_id: "业务ID", // 角色资源关联时使用
     category: "一级分类",
     group_name: "二级分组",
-    url_path: '访问链接',
+    url_path: '第三方链接', // url_path/report_id 二选一配置即可
+    report_id: '报表ID', // url_path/report_id 二选一配置即可
     publicly: 是否公开通用（无权限设置，所有角色可看）
   }
 }
