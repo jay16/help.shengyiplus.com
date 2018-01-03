@@ -30,6 +30,7 @@
     - 创建群组
     - 获取群组
     - 更新群组
+    - 更新群组权限
     - 获取群组列表
     - 获取用户群组权限列表
     - 更新用户群组权限列表
@@ -580,6 +581,39 @@ response:
     "group_id": "群组ID",
     "group_name": "群组名称",
     "memo": "备注说明"
+  }
+}
+```
+
+#### 更新群组权限
+
+```
+post /api/v2/group/resources
+
+params:
+{
+  api_token: '必填项，具体机制可参考上述相关说明',
+  group: {
+    group_id: 群组id,
+    dept_ids: 门店id,
+    class_ids: 商行id,
+    gids: 大区(区域)id,
+    province_ids: 集群id,
+    district_ids: 大区(区域)
+  }
+}
+
+response:
+{
+  code: 201(成功)/200(失败原因),
+  message: 成功提示/失败原因,
+  data: { // 更新后的群组信息
+    "group_id": 165,
+    "dept_ids": null,
+    "class_ids": "all",
+    "gids": null,
+    "province_ids": 2,
+    "district_ids": "all"
   }
 }
 ```

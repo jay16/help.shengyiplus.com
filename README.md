@@ -6,7 +6,8 @@
 
 ## 合作伙伴
 
-- 永辉超市股份有限公司（上海）『永辉生意人』[iOS](https://www.pgyer.com/yh-i) | [Android](https://www.pgyer.com/yh-a)
-- 浩擎信息科技有限公司（上海）『企邮通』[iOS](https://www.pgyer.com/qiyoutong-i) | [Android](https://www.pgyer.com/qiyoutong-a)
+- 永辉超市股份有限公司（上海）[『永辉生意人』](https://www.pgyer.com/yhsyr)
+- 浩擎信息科技有限公司（上海）[『企邮通』](https://www.pgyer.com/qiyoutong-a) 
+- 上海岸登信息科技有限公司（上海）[『睿商+』](https://www.pgyer.com/ruishangplus)
 
-如果你是上述合作伙伴公司的应用使用用户，请不要疑惑，所有围绕应用使用相关的问题都统一整理在这里。
+如果你是上述合作伙伴公司的应用用户，请不要疑惑，所有围绕应用使用相关的问题都统一整理在这里。
