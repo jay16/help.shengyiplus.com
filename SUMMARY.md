@@ -11,7 +11,7 @@
         * [设置](/docs/modules/setting.md)
     * [服务器]()
         * [消息中心](/docs/developer/message-center.md)
-* [报表模板]
+* [报表模板]()
     * [原生报表](/docs/templates/template_v1.md)
     * [通用报表（原生报表）](/docs/templates/template_v10.md)
     * [报告模式](/docs/templates/template_v2.md)
