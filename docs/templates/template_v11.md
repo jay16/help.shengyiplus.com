@@ -350,32 +350,38 @@ return
         {
           "head_name": "自身ID",
           "column_name": "dim_com",
-          "order_weight_column_name": "dim_com"
+          "sortable": true,
+          "sortType": 'number'
         },
         {
           "head_name": "父ID",
           "column_name": "dim2",
-          "order_weight_column_name": "dim2"
+          "sortable": true,
+          "sortType": 'number'
         },
         {
           "head_name": "门店名",
           "column_name": "dim_com",
-          "order_weight_column_name": "dim_com"
+          "sortable": true,
+          "sortType": 'number'
         },
         {
           "head_name": "周品类指标",
           "column_name": "mea_float1",
-          "order_weight_column_name": "mea_float1"
+          "sortable": true,
+          "sortType": 'number'
         },
         {
           "head_name": "周品类销售",
           "column_name": "mea_float2",
-          "order_weight_column_name": "mea_float2"
+          "sortable": true,
+          "sortType": 'number'
         },
         {
           "head_name": "达成率",
           "column_name": "dim1",
-          "order_weight_column_name": "dim1",
+          "sortable": true,
+          "sortType": 'number'
           "hyperlink":"dim2",
           "hyperlink_target":"_blank"
         }
@@ -394,16 +400,16 @@ return
       "loadingText": "拼命加载中"
     },
     "column": [
-      { "id": 0, "property": "index", "label": "序号", "sortable": true },
-      { "id": 1, "property": "name", "label": "门店", "sortable": true },
-      { "id": 5, "property": "weekindex", "label": "周指标", "sortable": true },
-      { "id": 7, "property": "ringRatio", "label": "品类环比", "sortable": true }
+      { "id": 0, "property": "index", "label": "序号", "sortable": true, "sortType": 'number' },
+      { "id": 1, "property": "name", "label": "门店", "sortable": true, "sortType": 'number' },
+      { "id": 5, "property": "weekindex", "label": "周指标", "sortable": true, "sortType": 'number' },
+      { "id": 7, "property": "ringRatio", "label": "品类环比", "sortable": true, "sortType": 'number' }
     ],
     "data": [
       [
-        {"index": 1, "index-order-weight": 1, "name": "安永店", "name-order-weight": "1", "weekindex": 5800, "weekindex-order-weight": 5800, "ringRatio": "45.6%", "ringRatio-order-weight": "45.6"},
-        {"index": 2, "index-order-weight": 2, "name": "佳惠店", "name-order-weight": "2", "weekindex": 5800, "weekindex-order-weight": 5800, "ringRatio": "100.5%", "ringRatio-order-weight": "100.5"},
-        {"index": 3, "index-order-weight": 3, "name": "光明店", "name-order-weight": "3", "weekindex": 1400, "weekindex-order-weight": 5800, "ringRatio": "92%", "ringRatio-order-weight": "92"}
+        {"index": 1, "name": "安永店", "weekindex": 5800, "ringRatio": "45.6%"},
+        {"index": 2, "name": "佳惠店", "weekindex": 5800, "ringRatio": "100.5%"},
+        {"index": 3, "name": "光明店", "weekindex": 1400, "ringRatio": "92%"}
       ]
     ],
     "pagination": {}
