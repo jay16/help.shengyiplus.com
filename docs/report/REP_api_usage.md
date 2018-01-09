@@ -24,13 +24,13 @@ delimiter ;
 
 已维护在子库中的存储过程如何维护在主库中：
 
-1. 查看存储过程的定义
+### 查看存储过程的定义
 
 ```
 show create procedure pro_sales_params_p0;
 ```
 
-2. 删除存储过程定义中的用户权限
+### 删除存储过程定义中的用户权限
 
 ```
 -- 包含用户权限的示例，不允许
@@ -40,7 +40,7 @@ CREATE DEFINER=`saas000`@`%` PROCEDURE `pro_sales_params_p0`()
 CREATE PROCEDURE `pro_sales_params_p0`()
 ```
 
-3. 添加创建存储过程的基本操作
+### 添加创建存储过程的基本操作
 
 ```
 drop procedure if exists `存储过程名称`;
@@ -52,7 +52,7 @@ delimiter ;;
 delimiter ;
 ```
 
-4. 传参的数据编码问题
+### 传参的数据编码问题
 
 强调设置传的数据编码，比遇到问题再解决更敏捷;
 
