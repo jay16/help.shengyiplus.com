@@ -5,6 +5,7 @@
 1. 报表维表(sys_template_reports)
 2. 报表-群组关联列(sys_group_reports)
 3. 报表数据表(`report_data_<REPORT_ID>_<PART_NAME>`)
+4. 报表缓存时间戳(sys_timestamp_manager)
 
 手工刷新报表缓存:
 
@@ -59,3 +60,15 @@ where str.report_id = <REPORT_ID>;
 
 [报表模板列表](/docs/templates/index.md)
 
+### 报表缓存时间戳(sys_timestamp_manager)
+
+服务器端有定时任务会扫描报表缓存时间戳表，当前缓存的时间戳与数据表中的时间戳不同时，则执行刷新报表数据缓存，并更新缓存中的时间戳为数据表中的时间戳。
+
+
+```
+select 
+  timestamp 
+from sys_timestamp_manager 
+where obj_type = 'report#data' 
+  and obj_id = <REPORT_ID>;
+```
