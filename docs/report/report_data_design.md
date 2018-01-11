@@ -8,7 +8,7 @@
 快捷创建报表数据表的存储过程：
 
 ```
-call call pro_create_report_data_table(报表ID, 'main');
+call pro_create_report_data_table(报表ID, 'main');
 ```
 
 更多系统存储过程[入口](/docs/report/procedures.sql.md)
