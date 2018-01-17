@@ -147,6 +147,7 @@
                 "column_name": "dim1",
                 "hyperlink": "dim2", // 支持超链接，取该字段内容作为链接
                 "hyperlink_target": "_blank", // 超链接跳转模式，默认为 _blank
+                "hyperlink_tabindex": "-1", // 业务字段 tabindex，默认为 -1
                 "sortable": 0
               }
             ]
