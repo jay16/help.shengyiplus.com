@@ -19,6 +19,7 @@
     * [数据采集](/docs/templates/template_v9.md)
     * [会议报表](/docs/templates/template_v11.md)
     * [通用报表（会议报表）](/docs/templates/template_v12.md)
+    * [PC 报表](/docs/templates/template_v13.md)
 * [报表开发]()(/docs/report/index.md)
     * [数据表设计](/docs/report/report_data_design.md)
     * [报表数据缓存](/docs/report/report_data_cache.md)
