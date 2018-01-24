@@ -19,7 +19,7 @@
         ```
         /root/www/saas_images/saas_db001/hello.png 
         -> 
-        http://saas-srver-ip:8084/saas_db001/hello.png
+        http://server-ip:8084/saas_db001/hello.png
         ```
   
 ## REP 接口开发
@@ -41,7 +41,7 @@
 接口访问格式:
 
 ```
-POST http://server-aip:8081/saas-api/api/portal/custom
+POST http://server-ip:8081/saas-api/api/portal/custom
 params:
 {
   repCode: REP 编码,
@@ -82,7 +82,7 @@ VALUES
 针对上述配置 POST 实例的 REP 接口调用示例：
 
 ```
-POST http://server-aip:8081/saas-api/api/portal/custom
+POST http://server-ip:8081/saas-api/api/portal/custom
 Params:
 {
   repCode: REP_002018,
@@ -123,7 +123,7 @@ Reponse:
 接口访问格式:
 
 ```
-GET http://server-aip:8081/saas-api/api/portal/custom?repCode=REP编码&dataSourceCode=数据源ID&业务字段1=业务数据1
+GET http://server-ip:8081/saas-api/api/portal/custom?repCode=REP编码&dataSourceCode=数据源ID&业务字段1=业务数据1
 ```
 
 #### 执行 SELECT 操作实例
