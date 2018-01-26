@@ -14,7 +14,6 @@
 
 可以通过 『管理中心』 - 『消息中心』 新建消息通知；新建成功后立即执行任务。
 
-
 ![](/assets/images/消息中心-新建.jpeg)
 
 *ps:『消息中心』在功能上包含了『消息推送』模块*
@@ -69,10 +68,3 @@ extra_params_string | string | 额外参数（JSON 格式）
       from sys_users
      where user_num in ('mock-user')
     ```
-
-
-### API 接口
-
-TODO
-
-*提供开发者使用；思考使用场景；*
