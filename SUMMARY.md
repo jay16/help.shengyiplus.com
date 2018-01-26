@@ -28,7 +28,7 @@
     * [安装问题](/docs/FAQ/faq.md)
     * [报表问题](/docs/FAQ/module-report.md)
 * [开发文档]()
-    * [消息管理中心](/docs/developer/push-message.md)
+    * [消息管理中心](/docs/developer/message-center.md)
     * [消息推送逻辑](/docs/developer/push-message.md)
     * [工具箱应用](/docs/developer/module-app.md)
     * [JS 交互原生代码接口](/docs/developer/js-native-bridge.md)
