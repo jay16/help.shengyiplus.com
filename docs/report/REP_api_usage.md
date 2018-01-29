@@ -12,15 +12,28 @@
     - 8084 图片查看服务
     - 8085 图片上传接口
 
-- SaaS 图片服务
-    - nginx 映射路径：`/root/www/saas_images`
-    - 图片映射规则：
-    
-        ```
-        /root/www/saas_images/saas_db001/hello.png 
-        -> 
-        http://server-ip:8084/saas_db001/hello.png
-        ```
+## SaaS 图片服务
+
+nginx 映射路径：`/root/www/saas_images`
+
+图片位置
+
+```
+/root/www/saas_images/saas_images/world/hello/4d529d62-d239-4c8d-840e-bb7c58349513.png
+```
+
+以生意+ SaaS 服务来说明：
+
+```
+# 使用 IP + 端口访问图片，不需要指明根目录，使用相对路径
+# http://47.96.170.148:8084 + 图片相对路径
+http://47.96.170.148:8084/world/hello/4d529d62-d239-4c8d-840e-bb7c58349513.png
+
+# 使用域名访问图片，需要根据根目录
+# http://shengyiplus.idata.mobi/saas_images/ + 图片相对路径
+http://shengyiplus.idata.mobi/saas_images/world/hello/4d529d62-d239-4c8d-840e-bb7c58349513.png
+https://shengyiplus.idata.mobi/saas_images/world/hello/4d529d62-d239-4c8d-840e-bb7c58349513.png
+```
   
 ## REP 接口开发
 
@@ -164,7 +177,7 @@ where report_id = #reportId#;
 针对上述配置 GET 实例的 REP 接口调用示例：
 
 ```
-GET http://server-ip:8081/saas-api/api/portal/custom?repCode=REP_000058&dateSourceCode=DATA_000001&reportId=68
+GET http://server-ip:8081/saas-api/api/portal/custom?repCode=REP_000058&dataSourceCode=DATA_000001&reportId=68
 Reponse:
 {
   "msg": "请求数据成功!",
