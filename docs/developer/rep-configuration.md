@@ -12,7 +12,6 @@
     - 8084 图片查看服务
     - 8085 图片上传接口
 
-
 ## SaaS 图片服务
 
 假设 nginx 映射路径：`/root/www/saas_images`
