@@ -22,7 +22,6 @@
 * [报表开发]()(/docs/report/index.md)
     * [数据表设计](/docs/report/report_data_design.md)
     * [报表数据缓存](/docs/report/report_data_cache.md)
-    * [REP 接口配置](/docs/report/REP_api_usage.md)
     * [系统存储过程](/docs/report/procedures.sql.md)
 * [常见问题]()
     * [安装问题](/docs/FAQ/faq.md)
@@ -34,4 +33,5 @@
     * [JS 交互原生代码接口](/docs/developer/js-native-bridge.md)
     * [报表权限说明](/docs/developer/report-privileges.md)
     * [`API#v2` 接口](/docs/developer/api_v2.md)
+    * [REP 接口配置](/docs/developer/rep_api_usage.md)
 
