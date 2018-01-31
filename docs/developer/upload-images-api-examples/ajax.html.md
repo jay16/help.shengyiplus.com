@@ -1,3 +1,5 @@
+## SaaS 图片服务, AJAX 示例
+
 ```
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js" type="text/javascript"></script>
@@ -57,4 +59,4 @@
 
 运行效果：
 
-![运行效果](upload-images-api-examples/run-ajax-example.png)
+![运行效果](/docs/developer/upload-images-api-examples/run-ajax-example.png)

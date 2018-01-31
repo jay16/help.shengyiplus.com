@@ -32,6 +32,9 @@
     * [工具箱应用](/docs/developer/module-app.md)
     * [JS 交互原生代码接口](/docs/developer/js-native-bridge.md)
     * [报表权限说明](/docs/developer/report-privileges.md)
-    * [`API#v2` 接口](/docs/developer/api_v2.md)
+    * [`API#V2` 接口](/docs/developer/api_v2.md)
     * [REP 接口配置](/docs/developer/rep_api_usage.md)
+        * [AJAX 示例](/docs/developer/upload-images-api-examples/ajax.html.md)
+        * [Vue.js 示例](/docs/developer/upload-images-api-examples/vue.js.md)
+        * [Postman 示例](/docs/developer/upload-images-api-examples/postman.md)
 

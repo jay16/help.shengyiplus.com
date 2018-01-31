@@ -1,3 +1,5 @@
+## SaaS 图片服务, Vue.js 示例
+
 ```
 <template>
   <div>
@@ -77,4 +79,4 @@ export default {
 
 运行效果：
 
-![运行效果](upload-images-api-examples/run-vue-example.png)
+![运行效果](/docs/developer/upload-images-api-examples/run-vue-example.png)

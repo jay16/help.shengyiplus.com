@@ -35,7 +35,7 @@ http://shengyiplus.idata.mobi/saas_images/world/hello/4d529d62-d239-4c8d-840e-bb
 https://shengyiplus.idata.mobi/saas_images/world/hello/4d529d62-d239-4c8d-840e-bb7c58349513.png
 ```
 
-具体图片上传、图片预览功能的实现请阅读示例源码：[ajax 示例](upload-images-api-examples/ajax.html.md)、[vue 示例](upload-images-api-examples/vue.md)
+具体图片上传、图片预览功能的实现请阅读示例源码：[ajax 示例](/docs/developer/upload-images-api-examples/ajax.html.md)、[vue 示例](/docs/developer/upload-images-api-examples/vue.md)
   
 ## REP 接口开发
 
