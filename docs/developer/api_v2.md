@@ -119,7 +119,7 @@ post /api/v2/user
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   user: {
     user_name: "必填，用户名称",
     user_num: "必填，用户编号，确保全表唯一",
@@ -137,7 +137,7 @@ response:
   code: 201(成功)/200(失败原因),
   message: 成功提示/失败原因,
   data: { // 用户信息
-    "id": "数据表标识ID",
+    id: "数据表标识ID",
     user_name: "用户名称",
     user_num: "用户编号，确保全表唯一",
     user_pass: "登录密码，MD5 加密",
@@ -157,60 +157,23 @@ get /api/v2/user/:user_num
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: "必填项，具体机制可参考上述相关说明"
 }
 
 response:
 {
   code: 200(成功)/401(接口权限验证失败),
-  "gravatar": "",
-  "store_ids_hash": "[]",
-  "active_flag": "1",
-  "last_login_browser": "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Mobile/14E304",
-  "access_token": "",
-  "group_name": "大区(全部)商行(全部)",
-  "user_name": "李俊杰",
-  "id": "99901",
-  "last_login_ip": "223.89.32.0",
-  "join_date": "",
-  "login_duration": "2",
-  "dept_name": "胜因团队",
-  "mobile": "13564379606",
-  "surpass_percentage": 0.7,
-  "role_id": "99",
-  "browse_report_count": "7",
-  "tel": "",
-  "browse_distinct_count": "7",
-  "browser_count": "26",
-  "user_num": "13564379606",
-  "updated_at": "2017-01-18 10:59:43 +0800",
-  "browse_count": "34",
-  "user_pass": "-",
-  "created_at": "2017-01-18 10:59:43 +0800",
-  "dept_id": "",
-  "status": "true",
-  "group_id": "165",
-  "role_name": "胜因团队",
-  "email": "jay_li@intfocus.com",
-  "user_id": "99901",
-  "login_day_num": "2",
-  "last_login_version": "api#v1",
-  "sign_in_count": "30",
-  "login_count": "3",
-  "position": "",
-  "last_login_at": "2017-04-20 12:39:23 +0800",
-  "store_ids_string": "",
-  "loading_md5": "8bd5c6a91d38848d3160e6c8a462b852",
-  "assets_md5": "03733e177232bfeb43808a445268c29d",
-  "assets": {
-    "fonts_md5": "5901960c857600316c3d141401c3af08",
-    "icons_md5": "655319ed85950ce2b16f39f63e741b8b",
-    "images_md5": "c339fffd9ad0c99cfae359463da14c30",
-    "javascripts_md5": "87f389bc3ef271eab2028c01b42a63b6",
-    "stylesheets_md5": "793b7b251b42ac81948c70a548323e66"
-  },
-  "BarCodeScan_md5": "f5c813c351d6d1666d5504851ad1ef55",
-  "advertisement_md5": "0239802a086466ec31d566ca910da0c9",
+  id: "99901",
+  gravatar: "",
+  active_flag: "1",
+  group_name": "大区(全部)商行(全部)",
+  user_name": "李俊杰",
+  join_date: "",
+  login_duration: "2",
+  dept_name: "胜因团队",
+  mobile: "13564379606",
+  role_id: "99",
+  ...
 }
 ```
 
@@ -221,7 +184,7 @@ post /api/v2/user/:user_num
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: "必填项，具体机制可参考上述相关说明"
   user: {
     user_name: "可选，用户名称",
     user_num: "可选，用户编号，确保全表唯一",
@@ -238,7 +201,7 @@ response:
   code: 201(成功)/200(失败原因)
   message: 成功提示/失败原因,
   data: { // 更新后的用户信息
-    "id": "数据表标识ID",
+    id: "数据表标识ID",
     user_name: "用户名称",
     user_num: "用户编号，确保全表唯一",
     user_pass: "登录密码，MD5 加密",
@@ -251,6 +214,24 @@ response:
 }
 ```
 
+##### 删除用户
+
+```
+post /api/v2/delete/user
+
+params:
+{
+  api_token: "必填项，具体机制可参考上述相关说明",
+  user_num: "用户编号"
+}
+
+response:
+{
+  code: 201(成功)/200(失败原因)
+  message: 删除成功
+}
+```
+
 ##### 获取用户列表
 
 ```
@@ -258,11 +239,11 @@ get /api/v2/users
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
-  page: '可选，第几页，默认 0',
-  page_size: '可选，每页数据项数量，默认 15',
-  user_num: '可选，筛选项，赋值时具有过滤功能',
-  user_name: '可选，筛选项，赋值时具有过滤功能'
+  api_token: "必填项，具体机制可参考上述相关说明",
+  page: "可选，第几页，默认 0",
+  page_size: "可选，每页数据项数量，默认 15",
+  user_num: "可选，筛选项，赋值时具有过滤功能",
+  user_name: "可选，筛选项，赋值时具有过滤功能"
 }
 
 response:
@@ -275,11 +256,11 @@ response:
   total_count: 15, // 总数量
   data: [ // 用户列表
     {
-      "id": "数据表标识ID",
+      id: "数据表标识ID",
       user_name: "用户名称",
       user_num: "用户编号，确保全表唯一",
       user_pass: "登录密码，MD5 加密",
-      status: "冻结状态, true/false",
+      status: "冻结状态, true/false(过期)",
       email: "邮箱",
       mobile: "联系方式",
       tel: "手机号",
@@ -290,14 +271,14 @@ response:
 }
 ```
 
-#### 更新用户冻结状态
+#### 更新用户冻结状态(过期)
 
 ```
 post /api/v2/user/:user_num/status
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   status: 1(正常)/0(冻结)
 }
 
@@ -315,7 +296,7 @@ post /api/v2/user/:user_num/password
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   password: MD5 加密 32 位字符串
 }
 
@@ -333,8 +314,8 @@ post /api/v2/user/:user_num/reset_password
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
-  mobile: '必填项，与用户编号关联的手机号，要求业务数据维护'
+  api_token: "必填项，具体机制可参考上述相关说明",
+  mobile: "必填项，与用户编号关联的手机号，要求业务数据维护"
 }
 
 response:
@@ -355,8 +336,8 @@ post /api/v2/refresh/user_cache
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
-  user_nums: '必填项，要重置的用户编号，多个以逗号分隔'
+  api_token: "必填项，具体机制可参考上述相关说明",
+  user_nums: "必填项，要重置的用户编号，多个以逗号分隔"
 }
 
 response:
@@ -379,7 +360,7 @@ post /api/v2/role
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   role: {
     role_name: "必填，角色名称",
     "memo": "可选，备注说明"
@@ -391,8 +372,8 @@ response:
   code: 201(成功)/200(失败原因)
   message: 成功提示/失败原因,
   data: { // 角色信息
-    "id": "数据表标识ID",
-    role_"id": "角色ID",
+    id: "数据表标识ID",
+    role_id: "角色ID",
     role_name: "角色名称",
     "memo": "备注说明"
   }
@@ -406,7 +387,7 @@ get /api/v2/role/:role_id
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   role_id: 角色ID
 }
 
@@ -415,8 +396,8 @@ response:
   code: 200(成功)/其他(失败原因)
   message: 成功提示/失败原因,
   data: { // 角色信息
-    "id": "数据表标识ID",
-    role_"id": "角色ID",
+    id: "数据表标识ID",
+    role_id: "角色ID",
     role_name: "角色名称",
     "memo": "备注说明"
   }
@@ -430,7 +411,7 @@ post /api/v2/role/:id
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   role: {
     role_name: "角色名称",
     "memo": "备注说明"
@@ -442,8 +423,8 @@ response:
   code: 201(成功)/200(失败原因),
   message: 成功提示/失败原因,
   data: { // 更新后的角色信息
-    "id": "数据表标识ID",
-    role_"id": "角色ID",
+    id: "数据表标识ID",
+    role_id: "角色ID",
     role_name: "角色名称",
     "memo": "备注说明
   }
@@ -457,10 +438,10 @@ get /api/v2/roles
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
-  page: '可选，第几页，默认 0',
-  page_size: '可选，每页数据项数量，默认 15',
-  role_name: '可选，筛选项，赋值时具有过滤功能'
+  api_token: "必填项，具体机制可参考上述相关说明",
+  page: "可选，第几页，默认 0",
+  page_size: "可选，每页数据项数量，默认 15",
+  role_name: "可选，筛选项，赋值时具有过滤功能"
 }
 
 response:
@@ -473,8 +454,8 @@ response:
   total_count: 15, // 总数量
   data: [ // 角色列表
     {
-      "id": "数据表标识ID",
-      role_"id": "角色ID",
+      id: "数据表标识ID",
+      role_id: "角色ID",
       role_name: "角色名称",
       "memo": "备注说明"
     }
@@ -489,7 +470,7 @@ get /api/v2/user/:user_num/roles
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   lazy_load: 加载所有角色（默认可不传该参数）
 }
 
@@ -503,7 +484,7 @@ response:
   total_count: 15, // 总数量
   data: [
     {
-      "id": 99,
+      id: 99,
       "role_id": 29,
       "role_name": "胜因团队",
       "memo": null,
@@ -520,7 +501,7 @@ post /api/v2/user/:user_num/roles
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   role_ids: [角色ID 列表]
 }
 
@@ -540,7 +521,7 @@ post /api/v2/group
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   group: {
     "group_id": "可选，群组ID",
     "group_name": "必填，群组名称",
@@ -553,7 +534,7 @@ response:
   code: 201(成功)/200(失败原因),
   message: 成功提示/失败原因,
   data: { // 群组信息
-    "id": "数据表标识",
+    id: "数据表标识",
     "group_id": "群组ID",
     "group_name": "群组名称",
     "memo": "备注说明"
@@ -568,8 +549,8 @@ post /api/v2/group/:id
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
-  "id": 数据表标识
+  api_token: "必填项，具体机制可参考上述相关说明",
+  id: 数据表标识
 }
 
 response:
@@ -577,7 +558,7 @@ response:
   code: 201(成功)/200(失败原因)
   message: 成功提示/失败原因,
   data: { // 角色信息
-    "id": "数据表标识",
+    id: "数据表标识",
     "group_id": "群组ID",
     "group_name": "群组名称",
     "memo": "备注说明"
@@ -592,7 +573,7 @@ post /api/v2/group/resources
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   group: {
     group_id: 群组id,
     dept_ids: 门店id,
@@ -625,7 +606,7 @@ post /api/v2/group/:id
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   group: {
     "group_id": "群组ID",
     "group_name": "群组名称",
@@ -638,7 +619,7 @@ response:
   code: 201(成功)/200(失败原因),
   message: 成功提示/失败原因,
   data: { // 更新后的群组信息
-    "id": "数据表标识",
+    id: "数据表标识",
     "group_id": "群组ID",
     "group_name": "群组名称",
     "memo": "备注说明
@@ -653,10 +634,10 @@ get /api/v2/groups
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
-  page: '可选，第几页，默认 0',
-  page_size: '可选，每页数据项数量，默认 15',
-  group_name: '可选，筛选项，赋值时具有过滤功能'
+  api_token: "必填项，具体机制可参考上述相关说明",
+  page: "可选，第几页，默认 0",
+  page_size: "可选，每页数据项数量，默认 15",
+  group_name: "可选，筛选项，赋值时具有过滤功能"
 }
 
 response:
@@ -669,7 +650,7 @@ response:
   total_count: 15, // 总数量
   data: [ // 群组列表
     {
-      "id": "数据表标识",
+      id: "数据表标识",
       "group_id": "群组ID",
       "group_name": "群组名称",
       "memo": "备注说明"
@@ -694,7 +675,7 @@ response:
   total_count: 15, // 总数量
   data: [
     {
-      "id": 165,
+      id: 165,
       "group_id": "群组ID",
       "group_name": "大区",
       "memo": null,
@@ -711,7 +692,7 @@ post /api/v2/user/:user_num/groups
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   group_ids: [群组ID 列表]
 }
 
@@ -731,12 +712,12 @@ post /api/v2/kpi
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   kpi: {
     kpi_id: "必填,业务ID",
     kpi_group: "分类",
     kpi_name: "标题",
-    link: '必填,报表ID',
+    link: "必填,报表ID",
     publicly: 是否公开通用（无权限设置，所有角色可看）
   }
 }
@@ -744,7 +725,7 @@ params:
 response:
 {
   code: 201,
-  message: '创建成功'
+  message: "创建成功"
 }
 ```
 
@@ -759,7 +740,7 @@ get /api/v2/kpi/:id
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   id: 数据库标识
 }
 
@@ -768,7 +749,7 @@ response:
   "code": 200,
   "message": "查询成功",
   "data": {
-    "id": 8,
+    id: 8,
     "kpi_id": 8,
     "kpi_name": "第二集群销售额",
     "kpi_group": "生意概况",
@@ -788,7 +769,7 @@ post /api/v2/kpi/:id
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   kpi: {
     "kpi_id": 8,
     "kpi_name": "第二集群销售额",
@@ -819,9 +800,9 @@ get /api/v2/kpis
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
-  kpi_group: '选择，筛选项，赋值时具有过滤功能',
-  kpi_name: '可选，筛选项，赋值时具有过滤功能'
+  api_token: "必填项，具体机制可参考上述相关说明",
+  kpi_group: "选择，筛选项，赋值时具有过滤功能",
+  kpi_name: "可选，筛选项，赋值时具有过滤功能"
 }
 
 response:
@@ -834,7 +815,7 @@ response:
   "total_count": 19,
   "data": [
     {
-      "id": 8,
+      id: 8,
       "kpi_id": 8,
       "kpi_name": "第二集群销售额",
       "kpi_group": "生意概况",
@@ -857,8 +838,8 @@ get /api/v2/kpi/:id/roles
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
-  lazy_load: '加载所有角色（默认可不传该参数）'
+  api_token: "必填项，具体机制可参考上述相关说明",
+  lazy_load: "加载所有角色（默认可不传该参数）"
 }
 
 response:
@@ -871,7 +852,7 @@ response:
   "total_count": 25,
   data: [
     {
-      "id": 13,
+      id: 13,
       "role_id": 26,
       "role_name": "筹建",
       "memo": null,
@@ -888,14 +869,14 @@ post /api/v2/kpi/:id/roles
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   role_ids: [sys_roles.role_id]
 }
 
 response:
 {
   code: 201,
-  message: '数据更新成功'
+  message: "数据更新成功"
 }
 ```
 
@@ -906,7 +887,7 @@ get /api/v2/role/:role_id/kpis
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: "必填项，具体机制可参考上述相关说明"
 }
 
 response:
@@ -919,7 +900,7 @@ response:
   "total_count": 25,
   data: [
     {
-      "id": 8,
+      id: 8,
       "kpi_id": 8,
       "kpi_name": "第二集群销售额",
       "kpi_group": "生意概况",
@@ -940,14 +921,14 @@ post /api/v2/role/:role_id/kpis
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   kpi_ids: []
 }
 
 response:
 {
   code: 201,
-  message: '数据更新成功'
+  message: "数据更新成功"
 }
 ```
 
@@ -959,7 +940,7 @@ get /api/v2/reports
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: "必填项，具体机制可参考上述相关说明"
 }
 
 response:
@@ -972,7 +953,7 @@ response:
   "total_count": 38,
   data: [
     {
-      "id": 8,
+      id: 8,
       "title": "第二集群销售额",
       "report_id": 8,
       "template_id": 4,
@@ -995,13 +976,13 @@ post /api/v2/analyse
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   analyse: {
     name: "标题",
     group_id: "业务ID", // 角色资源关联时使用（若不设置，则与自增型 id 一致）
     category: "一级分类",
     group_name: "二级分组",
-    report_id: '报表ID',
+    report_id: "报表ID",
     publicly: 0/1, // 是否公开通用（无权限设置，所有角色可看）
   }
 }
@@ -1009,7 +990,7 @@ params:
 response:
 {
   code: 201,
-  message: '创建成功'
+  message: "创建成功"
 }
 ```
 
@@ -1028,7 +1009,7 @@ get /api/v2/analyse/:id
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   id: 数据库标识
 }
 
@@ -1041,7 +1022,7 @@ response:
   "total_page": 2,
   "total_count": 16,
   data: {
-    "id": 13,
+    id: 13,
     "name": "第二集群目标",
     "category": "销售分析",
     "group_name": "Bravo目标管理",
@@ -1065,13 +1046,13 @@ post /api/v2/analyse/:id
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   analyse: {
     name: "标题",
     group_id: "业务ID", // 角色资源关联时使用（若不设置，则与自增型 id 一致）
     category: "一级分类",
     group_name: "二级分组",
-    report_id: '报表ID',
+    report_id: "报表ID",
     publicly: 是否公开通用（无权限设置，所有角色可看）
   }
 }
@@ -1079,9 +1060,9 @@ params:
 response:
 {
   code: 201,
-  message: '更新成功',
+  message: "更新成功",
   data: {
-    "id": 13,
+    id: 13,
     group_id: "业务ID", // 角色资源关联时使用
     "name": "第二集群目标",
     "category": "销售分析",
@@ -1110,9 +1091,9 @@ get /api/v2/analyses
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
-  group_name: '可选，筛选项，赋值时具有过滤功能',
-  name: '可选，筛选项，赋值时具有过滤功能'
+  api_token: "必填项，具体机制可参考上述相关说明",
+  group_name: "可选，筛选项，赋值时具有过滤功能",
+  name: "可选，筛选项，赋值时具有过滤功能"
 }
 
 response:
@@ -1125,7 +1106,7 @@ response:
   "total_count": 16,
   data: [
     {
-      "id": 13,
+      id: 13,
       "name": "第二集群目标",
       "category": "销售分析",
       "group_name": "Bravo目标管理",
@@ -1150,7 +1131,7 @@ get /api/v2/analyse/:analyse_id/roles
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   lazy_load: 加载所有角色（默认可不传该参数）
 }
 
@@ -1164,7 +1145,7 @@ response:
   "total_count": 25,
   data: [
     {
-      "id": 13,
+      id: 13,
       "role_id": 26,
       "role_name": "筹建",
       "memo": null,
@@ -1181,14 +1162,14 @@ post /api/v2/analyse/:analyse_id/roles
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   role_ids: [sys_roles.role_id]
 }
 
 response:
 {
   code: 201,
-  message: '数据更新成功'
+  message: "数据更新成功"
 }
 ```
 
@@ -1199,7 +1180,7 @@ get /api/v2/role/:role_id/analyses
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: "必填项，具体机制可参考上述相关说明"
 }
 
 response:
@@ -1212,7 +1193,7 @@ response:
   "total_count": 25,
   data: [
     {
-      "id": 13,
+      id: 13,
       "name": "第二集群目标",
       "category": "销售分析",
       "group_name": "Bravo目标管理",
@@ -1237,14 +1218,14 @@ post /api/v2/role/:role_id/analyses
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   analyse_ids: []
 }
 
 response:
 {
   code: 201,
-  message: '数据更新成功'
+  message: "数据更新成功"
 }
 ```
 
@@ -1257,14 +1238,14 @@ post /api/v2/app
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   app: {
     name: "标题",
     group_id: "业务ID", // 角色资源关联时使用（若不设置，则与自增型 id 一致）
     category: "一级分类",
     group_name: "二级分组",
-    url_path: '第三方链接', // url_path/report_id 二选一配置即可
-    report_id: '报表ID', // url_path/report_id 二选一配置即可
+    url_path: "第三方链接", // url_path/report_id 二选一配置即可
+    report_id: "报表ID", // url_path/report_id 二选一配置即可
     publicly: 是否公开通用（无权限设置，所有角色可看）
   }
 }
@@ -1272,7 +1253,7 @@ params:
 response:
 {
   code: 201,
-  message: '创建成功'
+  message: "创建成功"
 }
 ```
 
@@ -1291,7 +1272,7 @@ get /api/v2/app/:id
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   id: 数据库标识
 }
 
@@ -1300,7 +1281,7 @@ response:
   "code": 200,
   "message": "获取数据成功",
   "data": {
-    "id": 1,
+    id: 1,
     "name": "2017赛马指标计算规则",
     "category": null,
     "group_name": "学习文档",
@@ -1324,14 +1305,14 @@ post /api/v2/app/:id
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',（若不设置，则与自增型 id 一致）
+  api_token: "必填项，具体机制可参考上述相关说明",（若不设置，则与自增型 id 一致）
   app: {
     name: "标题",
     group_id: "业务ID", // 角色资源关联时使用
     category: "一级分类",
     group_name: "二级分组",
-    url_path: '第三方链接', // url_path/report_id 二选一配置即可
-    report_id: '报表ID', // url_path/report_id 二选一配置即可
+    url_path: "第三方链接", // url_path/report_id 二选一配置即可
+    report_id: "报表ID", // url_path/report_id 二选一配置即可
     publicly: 是否公开通用（无权限设置，所有角色可看）
   }
 }
@@ -1339,9 +1320,9 @@ params:
 response:
 {
   code: 201,
-  message: '更新成功',
+  message: "更新成功",
   data: {
-    "id": 1,
+    id: 1,
     "name": "2017赛马指标计算规则",
     "category": null,
     "group_name": "学习文档",
@@ -1369,9 +1350,9 @@ get /api/v2/apps
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
-  group_name: '可选，筛选项，赋值时具有过滤功能',
-  name: '可选，筛选项，赋值时具有过滤功能'
+  api_token: "必填项，具体机制可参考上述相关说明",
+  group_name: "可选，筛选项，赋值时具有过滤功能",
+  name: "可选，筛选项，赋值时具有过滤功能"
 }
 
 response:
@@ -1384,7 +1365,7 @@ response:
   "total_count": 25,
   data: [
     {
-      "id": 1,
+      id: 1,
       "name": "2017赛马指标计算规则",
       "category": null,
       "group_name": "学习文档",
@@ -1409,7 +1390,7 @@ get /api/v2/app/:app_id/roles
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   lazy_load: 加载所有角色（默认可不传该参数）
 }
 
@@ -1423,7 +1404,7 @@ response:
   "total_count": 25,
   data: [
     {
-      "id": 6,
+      id: 6,
       "role_id": 2,
       "role_name": "信息部",
       "memo": null,
@@ -1440,14 +1421,14 @@ post /api/v2/app/:app_id/roles
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   role_ids: [sys_roles.role_id]
 }
 
 response:
 {
   code: 201,
-  message: '数据更新成功'
+  message: "数据更新成功"
 }
 ```
 
@@ -1458,7 +1439,7 @@ get /api/v2/role/:role_id/apps
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: "必填项，具体机制可参考上述相关说明"
 }
 
 response:
@@ -1471,7 +1452,7 @@ response:
   "total_count": 25,
   data: [
     {
-      "id": 1,
+      id: 1,
       "name": "2017赛马指标计算规则",
       "category": null,
       "group_name": "学习文档",
@@ -1496,14 +1477,14 @@ post /api/v2/role/:role_id/apps
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   app_ids: []
 }
 
 response:
 {
   code: 201,
-  message: '数据更新成功'
+  message: "数据更新成功"
 }
 ```
 
@@ -1522,7 +1503,7 @@ post /api/v2/list/toolbox
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: "必填项，具体机制可参考上述相关说明"
 }
 
 response:
@@ -1535,7 +1516,7 @@ response:
   "total_count": 5,
   "data": [
     {
-      "id": 9911,
+      id: 9911,
       "name": "门店巡检",
       "category": "1",
       "group_name": "测试",
@@ -1560,7 +1541,7 @@ get /api/v2/toolbox/:app_id/roles
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: "必填项，具体机制可参考上述相关说明"
 }
 
 response:
@@ -1573,7 +1554,7 @@ response:
   "total_count": 30,
   "data": [
     {
-      "id": 2,
+      id: 2,
       "role_id": 18,
       "role_name": "会员店",
       "memo": null,
@@ -1590,7 +1571,7 @@ get /api/v2/role/:role_id/toolbox
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: "必填项，具体机制可参考上述相关说明"
 }
 
 response:
@@ -1603,7 +1584,7 @@ response:
   "total_count": 36,
   "data": [
     {
-      "id": 1,
+      id: 1,
       "name": "2017赛马指标计算规则",
       "category": "1",
       "group_name": "学习文档",
@@ -1628,7 +1609,7 @@ post /api/v2/toolbox/:app_id/roles
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   role_ids: [角色ID]
 }
 
@@ -1646,7 +1627,7 @@ post /api/v2/role/:role_id/toolbox
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
+  api_token: "必填项，具体机制可参考上述相关说明",
   app_ids: [应用ID]
 }
 
@@ -1665,15 +1646,15 @@ get /api/v2/address_to_location
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
-  address: '具体地址'
+  api_token: "必填项，具体机制可参考上述相关说明",
+  address: "具体地址"
 }
 
 response:
 {
   code: 200,
-  message: 'successfully',
-  data: '经度,纬度'
+  message: "successfully",
+  data: "经度,纬度"
 }
 ```
 
@@ -1684,15 +1665,15 @@ get /api/v2/location_to_address
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明',
-  location: 经度,纬度'
+  api_token: "必填项，具体机制可参考上述相关说明",
+  location: 经度,纬度"
 }
 
 response:
 {
   code: 200,
-  message: 'successfully',
-  data: '具体地址'
+  message: "successfully",
+  data: "具体地址"
 }
 ```
 
@@ -1703,7 +1684,7 @@ get /api/v2/callback_action_logs
 
 params:
 {
-  api_token: '必填项，具体机制可参考上述相关说明'
+  api_token: "必填项，具体机制可参考上述相关说明"
 }
 
 response:
@@ -1716,7 +1697,7 @@ response:
   total_count: 15, // 总数量
   data: [
     {
-      "id": 7,
+      id: 7,
       "callback": "YH::Callback.update_user_password", // 本地回调接口封装函数名称
       "url": "http://testapi.yonghui.cn/yhportal/app/api/user/updatePassword", // 回调接口链接
       "method": "post", // 回调接口呼叫方式
